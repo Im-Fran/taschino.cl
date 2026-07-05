@@ -132,10 +132,25 @@
   flex-shrink: 0;
 }
 
-.navbar__logo {
+/* .navbar__logo { height: 42px; width: auto; object-fit: contain; } — reemplazada por logo CSS */
+
+/* Logo CSS — reemplaza /media/logo.webp */
+.navbar__logo-css {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
   height: 42px;
-  width: auto;
-  object-fit: contain;
+  border-radius: 50%;
+  background: #D4A535;
+  color: #2C1810;
+  font-family: var(--font-body);
+  font-size: 0.38rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  user-select: none;
 }
 
 .navbar__links {

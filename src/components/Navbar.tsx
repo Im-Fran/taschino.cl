@@ -27,7 +27,8 @@ export default function Navbar() {
   return (
     <nav ref={navRef} className="navbar" role="navigation" aria-label="Navegación principal">
       <a href="#inicio" className="navbar__brand">
-        <img src="/media/logo.webp" alt="Taschino" className="navbar__logo" />
+        {/* ponytail: logo CSS puro, reemplaza /media/logo.webp */}
+        <span className="navbar__logo-css" aria-label="Taschino">TASCHINO</span>
       </a>
 
       <button
