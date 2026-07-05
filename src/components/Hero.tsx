@@ -6,7 +6,7 @@ const TAGLINE = 'Il Caffè Italiano nel corazón de Ñuñoa'
 
 export default function Hero() {
   const bgRef      = useRef<HTMLDivElement>(null)
-  const logoRef    = useRef<SVGSVGElement>(null)
+  const logoRef    = useRef<HTMLDivElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
 
   useEffect(() => {
@@ -59,40 +59,7 @@ export default function Hero() {
       )
 
       tl.fromTo('.hero__scroll', { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.2')
-
-      // Vapor de la taza — loop por wisp con duración, deriva y fade propios
-      // para que nunca se sincronicen y el reinicio del ciclo sea continuo
-      const steamPaths = logoRef.current?.querySelectorAll('.coffee-steam')
-      if (steamPaths && steamPaths.length > 0) {
-        const wisps = [
-          { rise: -34, drift: -6, peak: 0.55, duration: 2.6, delay: 0 },
-          { rise: -50, drift: 4, peak: 0.75, duration: 3.4, delay: 1.1 },
-          { rise: -38, drift: 7, peak: 0.6, duration: 3.0, delay: 0.5 },
-        ]
-        steamPaths.forEach((el, i) => {
-          const w = wisps[i % wisps.length]
-          gsap.set(el, { transformOrigin: '50% 100%' })
-          gsap.to(el, {
-            keyframes: {
-              '0%': { y: 0, x: 0, scaleX: 1, scaleY: 1, opacity: 0 },
-              '22%': { opacity: w.peak },
-              '60%': { y: w.rise * 0.6, x: w.drift },
-              '100%': {
-                y: w.rise,
-                x: w.drift * 0.4,
-                scaleX: 1.15,
-                scaleY: 1.25,
-                opacity: 0,
-              },
-              easeEach: 'sine.inOut',
-            },
-            duration: w.duration,
-            delay: w.delay,
-            repeat: -1,
-            ease: 'none',
-          })
-        })
-      }
+      // El vapor de la taza lo anima el propio CoffeeLogo (prop animated)
     })
 
     // Movimiento reducido: contenido visible, sin animaciones JS
@@ -111,7 +78,7 @@ export default function Hero() {
       <div className="hero__overlay" />
 
       <div className="hero__content">
-        <CoffeeLogo ref={logoRef} className="hero__logo" />
+        <CoffeeLogo ref={logoRef} className="hero__logo" animated />
 
         <span className="hero__badge">
           <span aria-hidden="true">☕</span> Café de especialidad · Pet friendly

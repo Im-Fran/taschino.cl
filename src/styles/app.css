@@ -247,10 +247,89 @@
 
 .hero__logo {
   height: clamp(90px, 15vw, 150px);
-  width: auto;
   color: #fff;
   opacity: 0; /* GSAP animará entrada */
-  overflow: visible;
+}
+
+/* ─── Taza de café (DOM + CSS, animada con GSAP) ────────────────── */
+/* Line-art en currentColor; proporciones en % para escalar con la altura */
+.coffee-cup {
+  --stroke: 4.5px;
+  position: relative;
+  aspect-ratio: 160 / 155;
+}
+
+.coffee-cup > span {
+  position: absolute;
+  display: block;
+}
+
+/* Vapor — columnas difuminadas que GSAP eleva y curva */
+.cup__steam {
+  top: 19%;
+  width: calc(var(--stroke) * 0.9);
+  height: 27%;
+  background: linear-gradient(to top, currentColor, transparent);
+  border-radius: 999px;
+  filter: blur(1px);
+  opacity: 0.45; /* visible en estático (footer / movimiento reducido) */
+}
+
+.cup__steam:nth-child(1) { left: 38%; height: 22%; top: 24%; }
+.cup__steam:nth-child(2) { left: 48%; }
+.cup__steam:nth-child(3) { left: 58.5%; height: 23%; top: 23%; }
+
+/* Café dentro de la taza */
+.cup__coffee {
+  left: 28%;
+  top: 48%;
+  width: 42%;
+  height: 7.5%;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.15;
+}
+
+/* Borde superior */
+.cup__rim {
+  left: 26%;
+  top: 46.5%;
+  width: 45.5%;
+  height: 10%;
+  border: var(--stroke) solid currentColor;
+  border-radius: 50%;
+}
+
+/* Cuerpo — bowl con base redondeada */
+.cup__body {
+  left: 27.5%;
+  top: 51.5%;
+  width: 42.5%;
+  height: 28.5%;
+  border: var(--stroke) solid currentColor;
+  border-top: 0;
+  border-radius: 0 0 50% 50% / 0 0 95% 95%;
+}
+
+/* Asa — anillo con la mitad izquierda recortada */
+.cup__handle {
+  left: 65%;
+  top: 54.5%;
+  width: 17.5%;
+  height: 20.5%;
+  border: var(--stroke) solid currentColor;
+  border-radius: 50%;
+  clip-path: inset(-15% -15% -15% 42%);
+}
+
+/* Platillo — arco fino bajo la taza */
+.cup__saucer {
+  left: 20%;
+  top: 85%;
+  width: 58%;
+  height: 9.5%;
+  border-bottom: calc(var(--stroke) * 0.9) solid currentColor;
+  border-radius: 0 0 100% 100%;
 }
 
 .hero__badge {
@@ -722,10 +801,9 @@
 }
 
 .footer__logo {
+  --stroke: 2.5px;
   height: 60px;
-  width: auto;
   color: rgba(255, 255, 255, 0.9);
-  overflow: visible;
 }
 
 .footer__social {
