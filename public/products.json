@@ -1,0 +1,232 @@
+[
+  { "name": "AGREGADO SYRUP JARABE", "precio": "$500" },
+  {
+    "name": "ESPRESSO",
+    "descripcion": "SHOT DE CAFE GRANO ITALIANO",
+    "precio": "$2.000"
+  },
+  { "name": "ESPRESSO DOBLE", "precio": "$2.500" },
+  {
+    "name": "CAFE DEL DIA",
+    "descripcion": "SHOT DE CAFE MAS 50% AGUA",
+    "precio": "$2.000"
+  },
+  {
+    "name": "AMERICANO GRANDE 16 OZ",
+    "descripcion": "CAFE AMERICANO VAZO 16 OZ",
+    "precio": "$2.500"
+  },
+  { "name": "AMERICANO MEDIANO 12 OZ", "precio": "$2.000" },
+  { "name": "MATCHA LATTE", "precio": "$4.200" },
+  { "name": "LATTE PEQUEÑO 8 0Z", "precio": "$2.800" },
+  { "name": "LATTE GRANDE 16 OZ", "precio": "$3.800" },
+  { "name": "LATTE MEDIANO 12 OZ", "precio": "$3.000" },
+  { "name": "MOCACCINO PEQUEÑO 8 OZ", "precio": "$2.800" },
+  {
+    "name": "MOCACCINO MEDIANO 12 OZ",
+    "descripcion": "CAFE LECHE CHOCOLATE",
+    "precio": "$3.500"
+  },
+  { "name": "MOCACCINO GRANDE 16 OZ", "precio": "$4.200" },
+  { "name": "CHOCOLATE ITALIANO PEQUEÑO 8 OZ", "precio": "$3.800" },
+  { "name": "CORTADO GRANDE 16 OZ", "precio": "$3.800" },
+  { "name": "MILK SHAKE", "precio": "$4.500" },
+  { "name": "CHAI LATTE", "precio": "$4.200" },
+  { "name": "CORTADO PEQUEÑO 8 OZ", "precio": "$2.400" },
+  { "name": "CAPPUCCINO PEQUEÑO 8OZ", "precio": "$2.500" },
+  { "name": "CAPPUCCINO MEDIANO 12OZ", "precio": "$3.200" },
+  { "name": "CAFE PROMOCION TASCHINO", "precio": "$2.700" },
+  {
+    "name": "TE NEGRO",
+    "descripcion": "TE NEGRO VARIEDAD A ELECCIÓN",
+    "precio": "$2.000"
+  },
+  { "name": "FRAPPUCCINO", "precio": "$4.600" },
+  {
+    "name": "AMERICANO PEQUEÑO 8 OZ",
+    "descripcion": "VASO 8 OZ",
+    "precio": "$1.900"
+  },
+  { "name": "CORTADO MEDIANO 12 OZ", "precio": "$3.500" },
+  { "name": "LECHE VEGETAL", "precio": "$1.000" },
+  { "name": "CHOCOLATE ITALIANO 12 OZ", "precio": "$4.500" },
+  { "name": "CHOCOLATE TRADICIONAL 12 OZ", "precio": "$3.000" },
+  { "name": "PROMO BROWNIE", "precio": "$3.000" },
+  {
+    "name": "ESPRESSO GAGGIA",
+    "descripcion": "CAFE EXTRAIDO DE CAFETERA GAGGIA",
+    "precio": "$2.700"
+  },
+  { "name": "CAPPUCCINO GAGGIA", "precio": "$3.700" },
+  { "name": "ESPRESSO DOBLE GAGGIA", "precio": "$3.200" },
+  { "name": "LATTE GAGGIA", "precio": "$4.200" },
+  { "name": "CAPPUCCINO GRANDE 16OZ", "precio": "$4.200" },
+  { "name": "Coffee flower", "precio": "$24.900" },
+  { "name": "SPERLARI CARAMELO", "precio": "$3.500" },
+  { "name": "TURRON 150 GR", "precio": "$5.000" },
+  { "name": "TURRON 200 G", "precio": "$9.000" },
+  { "name": "Panettone Classico 1000g", "precio": "$28.950" },
+  { "name": "Panettonne Al Limoni 600", "precio": "$22.100" },
+  { "name": "Panettone al Limoni 1000 g", "precio": "$29.850" },
+  { "name": "Panettone al Mandarino 1000 g", "precio": "$28.850" },
+  { "name": "Panettone a la Rosa con Sciroppo 1000", "precio": "$28.950" },
+  { "name": "Panettone Peachmary 750 g", "precio": "$25.200" },
+  { "name": "Panettone Classsico a.D1476 750 g", "precio": "$22.850" },
+  { "name": "Panettone al Mandarino Tardivo", "precio": "$29.990" },
+  { "name": "Panettone Classico Lata D 1476 750 g", "precio": "$29.990" },
+  { "name": "Panettone Classico D.1476 500 g Sogno", "precio": "$19.800" },
+  { "name": "Panettone Classico 1000 g Milano", "precio": "$28.950" },
+  { "name": "Pandoro Classico 1000 g Astucci", "precio": "$18.300" },
+  {
+    "name": "Veneziana al Pistacchio di Bronte 600g lata",
+    "precio": "$22.850"
+  },
+  { "name": "Veneziana al Mandarino Tardivo 600 g lata", "precio": "$23.600" },
+  {
+    "name": "Veneziana al pistacho di bronte latta 600 g",
+    "precio": "$23.600"
+  },
+  { "name": "Veneziana Albicocca 600 g lata", "precio": "$27.400" },
+  { "name": "PORCION PANETON", "precio": "$3.000" },
+  { "name": "MEDIA LUNA NUTELLA", "precio": "$1.990" },
+  { "name": "MEDIA LUNA DULCE LECHE", "precio": "$1.990" },
+  { "name": "MEDIA LUNA MERMELADA", "precio": "$1.990" },
+  { "name": "MEDIALUNA PASTELERA", "precio": "$1.990" },
+  { "name": "PORCIÓN DE CHURROS 6 unid", "precio": "$3.000" },
+  {
+    "name": "PROMOCIÓN QUEQUE ITALIANO MAS CAFE AMERICANO",
+    "precio": "$3.500"
+  },
+  { "name": "PROMOCION CHURROS TASCHINO", "precio": "$3.990" },
+  { "name": "PROMOCION BROWNIE + CAFE AMERICANO", "precio": "$3.000" },
+  { "name": "PROMO MIGA DESAYUNO", "precio": "$5.800" },
+  {
+    "name": "PROMO MEDIALUNA PASTELERA Y CAFE",
+    "descripcion": "MEDIA LUNA DE PASTELERA MAS UN CAFE CHICO A ELECCIÓN",
+    "precio": "$4.500"
+  },
+  { "name": "JUGO BLESS BOTELLA 300 ML", "precio": "$2.800" },
+  { "name": "GINGER BLESS 310 ML", "precio": "$2.100" },
+  { "name": "AGUA MINERAL", "precio": "$2.500" },
+  { "name": "COCA COLA LATA", "precio": "$2.500" },
+  { "name": "LIMONADAS POMONA", "precio": "$3.800" },
+  { "name": "JUGOS JUMEX", "precio": "$2.100" },
+  { "name": "Brownie 120gr", "precio": "$2.100" },
+  { "name": "Galletón de Avena y Berries 85gr", "precio": "$1.900" },
+  {
+    "name": "Galletón vainilla con chips de chocolate 85gr",
+    "precio": "$1.900"
+  },
+  { "name": "Muffin Americano Arándanos 125gr", "precio": "$1.900" },
+  { "name": "Muffin Americano Chocolate 125gr", "precio": "$1.900" },
+  {
+    "name": "Muffin Americano Vainilla con Chips Chocolate",
+    "precio": "$1.900"
+  },
+  { "name": "Muffins zanahoria canela 125gr", "precio": "$1.900" },
+  { "name": "Tartaleta manzana 10cm 170gr", "precio": "$4.800" },
+  {
+    "name": "Tartaleta pie de limón individual 10cm 185gr",
+    "precio": "$4.800"
+  },
+  {
+    "name": "Tartaleta Pie maracuyá individual 10cm 170gr",
+    "precio": "$4.800"
+  },
+  {
+    "name": "PORCION DE TORTA TASCHINO",
+    "descripcion": "TROZO DE TORTA TASCHINO",
+    "precio": "$5.500"
+  },
+  { "name": "PORCION QUEQUE LIMON CHARLOTT", "precio": "$3.000" },
+  { "name": "PORCION KUCHEN MANZANA CHARLOT", "precio": "$3.500" },
+  { "name": "DELICIAS", "precio": "$2.000" },
+  { "name": "KUCHEN DE NUEZ", "precio": "$5.000" },
+  { "name": "Galletas Florencia Bolsa 5unid", "precio": "$2.990" },
+  { "name": "BERLIN FLORENCIA", "precio": "$1.900" },
+  { "name": "ROLL DE CANELA FLORENCIA", "precio": "$3.900" },
+  { "name": "PORCIÓN CHEESE CAKE", "precio": "$5.000" },
+  { "name": "PORCION TORTA FRAMBUESA", "precio": "$5.500" },
+  { "name": "MIGA AVE PIMENTON", "precio": "$3.500" },
+  {
+    "name": "Bagel Salmon 205gr",
+    "descripcion": "Pan Bagels, salmon ahumado, Lechuga, queso crema, aceitunas negras, queso gauda, sal, pimienta",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Ciabatta chicken cesar 320gr",
+    "descripcion": "Ciabatta, lechuga, pechuga de pollo, queso gouda, tomate, dressing cesar (mayonesa, mostaza, ajo en polvo, pimienta)",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Ciabatta mechada 320gr",
+    "descripcion": "Pan Ciabatta, carne de vacuno (mechada), lechuga, queso gouda, tomate, aceite de oliva, mayonesa, sal, pimienta",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Ciabatta Mechada BBQ 320gr",
+    "descripcion": "Ciabatta, carne mechada, queso gouda cebolla caramelizada, salsa bbq.",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Ciabatta multigrano Capresse 305gr",
+    "descripcion": "Ciabatta multigrano, lechuga, tomate, queso gouda, pesto.",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Ciabatta multigrano napolitano 305gr",
+    "descripcion": "Ciabatta multigrano, tomate, queso gouda, jamon pierna cerdo, oregano, aceitunas",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Ciabatta Pollo Pesto 300gr",
+    "descripcion": "Pan Ciabatta, pesto genovese (nueces) pollo, tomate, lechuga, sal, pimienta.",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Croissant chicken sesamo 175gr",
+    "descripcion": "Croissant, Pollo, queso gouda, queso crema, semillas sesamo negro, aceite de oliva, champiñon, sal, pimienta",
+    "precio": "$5.400"
+  },
+  {
+    "name": "Croissant Jamón & Queso 180gr",
+    "descripcion": "Croissant, jamon pierna, queso gouda.",
+    "precio": "$4.200"
+  },
+  {
+    "name": "CARRARO 1927 ESPRESSO CASA 250 G MOLIDO AL VACIO",
+    "precio": "$9.500"
+  },
+  { "name": "TARTALETA KAYSER MARACUYA", "precio": "$5.500" },
+  { "name": "ECLAIR KAYSER", "precio": "$5.700" },
+  { "name": "QUICHE ESPINACA KAYSER", "precio": "$8.850" },
+  { "name": "QUICHE KAYSER LORRAINE", "precio": "$8.850" },
+  { "name": "SANDWICH CLUB KAYSER", "precio": "$6.990" },
+  { "name": "CROISSANT JAMON Y QUESO KAYSER", "precio": "$4.750" },
+  { "name": "CROQUE MONSEUR KAYSER", "precio": "$9.500" },
+  { "name": "MINI VIENNOIS KAYSER", "precio": "$2.500" },
+  { "name": "PORCION TARTA CITRON KAYSER", "precio": "$3.760" },
+  { "name": "ROLLO CANELA KAYSER", "precio": "$2.800" },
+  { "name": "ROLLO DE PASAS", "precio": "$2.600" },
+  { "name": "MUFFIN KAYSER", "precio": "$2.900" },
+  { "name": "TARTALETA DE MANZANA", "precio": "$3.960" },
+  { "name": "TARTALETA CITRON KAYSER", "precio": "$4.500" },
+  { "name": "Focaccia Kayser", "precio": "$6.990" },
+  { "name": "CROISSANT", "precio": "$1.900" },
+  { "name": "PAN DE CHOCOLATE", "precio": "$2.800" },
+  { "name": "ROLLO LIMON", "precio": "$2.550" },
+  { "name": "TARTALETA CITRON MERENGUE", "precio": "$3.980" },
+  {
+    "name": "CAFE GRANO LAVAZZA 1 K",
+    "descripcion": "PARA USO EN LA ELABORACIÓN DE RECETAS DE CAFE",
+    "precio": "$38.985"
+  },
+  {
+    "name": "CAFE GRANO KIMBO",
+    "descripcion": "PARA USO EN PREPARACION RECETAS DE CAFE",
+    "precio": "$53.490"
+  },
+  { "name": "POMONA MANGO BOTELLA", "precio": "$0" },
+  { "name": "POMONA FRUTILLA", "precio": "$0" },
+  { "name": "POMONA PULPA LIMON", "precio": "$0" }
+]
