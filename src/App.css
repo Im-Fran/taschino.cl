@@ -52,13 +52,18 @@
   font-size: 0.95rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, opacity 0.2s ease;
   cursor: pointer;
 }
 
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn--primary {
@@ -91,6 +96,13 @@
   background: rgba(44, 24, 16, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado al scrollear — GSAP ScrollTrigger solo alterna esta clase */
+.navbar--scrolled {
+  background: rgba(44, 24, 16, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 }
 
 .navbar__brand {
@@ -112,6 +124,7 @@
 }
 
 .navbar__links a {
+  position: relative;
   color: rgba(255, 255, 255, 0.88);
   font-family: 'Lato', sans-serif;
   font-size: 0.9rem;
@@ -119,6 +132,26 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color 0.2s;
+}
+
+/* Subrayado animado (solo desktop) */
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--caramel);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__links a:hover::after,
+.navbar__links a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .navbar__links a:hover {
@@ -191,41 +224,32 @@
   padding: 0 20px;
 }
 
-/* SVG vapor — posicionado encima del contenido del hero, apuntando hacia arriba */
-.hero__steam {
-  position: absolute;
-  bottom: calc(100% - 24px);
-  left: 50%;
-  transform: translateX(-50%);
-  width: 220px;
-  height: 100px;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.hero__steam path {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.6);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
 
 .hero__logo {
   height: clamp(100px, 18vw, 180px);
   width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  /* opacity inicial 0 — GSAP la animará */
-  opacity: 0;
+  color: #fff;
+  opacity: 0; /* GSAP animará entrada */
+  overflow: visible;
 }
 
 .hero__tagline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: rgba(255, 255, 255, 0.92);
-  font-style: italic;
-  max-width: 520px;
-  line-height: 1.5;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.96);
+  max-width: 700px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.hero__tagline .char {
+  display: inline-block;
+  opacity: 0; /* GSAP revela uno a uno */
+}
+
+.hero__tagline .char--space {
+  display: inline;
 }
 
 .hero__ctas {
@@ -261,6 +285,12 @@
   padding: 28px 28px 28px 24px;
   border: 1px solid rgba(200, 134, 10, 0.15);
   box-shadow: 0 2px 12px rgba(44, 24, 16, 0.06);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(44, 24, 16, 0.12);
 }
 
 .about-card__icon {
@@ -326,7 +356,7 @@
   color: var(--roast);
   border: 1px solid rgba(44, 24, 16, 0.1);
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
   white-space: nowrap;
 }
 
@@ -334,6 +364,11 @@
   background: rgba(200, 134, 10, 0.15);
   border-color: var(--caramel);
   color: var(--espresso);
+  transform: translateY(-1px);
+}
+
+.menu__tab:active {
+  transform: scale(0.96);
 }
 
 .menu__tab--active {
@@ -357,6 +392,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(44, 24, 16, 0.1);
 }
 
 .product-card__name {
@@ -407,7 +448,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .gallery__item:hover img {
@@ -521,11 +562,10 @@
 }
 
 .footer__logo {
-  height: 48px;
+  height: 60px;
   width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  overflow: visible;
 }
 
 .footer__social {
@@ -543,12 +583,13 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .footer__social a:hover {
   background: var(--caramel);
   color: var(--espresso);
+  transform: translateY(-3px);
 }
 
 .footer__social svg {
@@ -599,7 +640,6 @@
   }
 
   .navbar__links {
-    display: none;
     position: absolute;
     top: var(--nav-h);
     left: 0;
@@ -609,10 +649,24 @@
     gap: 0;
     padding: 16px 0 24px;
     text-align: center;
+    /* Cerrado: oculto pero animable (transform + opacity, sin display) */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.25s;
   }
 
   .navbar__links.open {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Sin subrayado animado en el menú móvil */
+  .navbar__links a::after {
+    display: none;
   }
 
   .navbar__links li {
@@ -646,5 +700,18 @@
   .btn {
     width: 100%;
     max-width: 280px;
+  }
+}
+
+/* ─── Accesibilidad: movimiento reducido ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* GSAP oculta estos elementos antes de animarlos — asegurar visibilidad */
+  .hero__logo,
+  .hero__tagline .char {
+    opacity: 1;
+  }
+
+  .hero__bg {
+    will-change: auto;
   }
 }

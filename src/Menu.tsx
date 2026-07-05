@@ -88,16 +88,17 @@ export default function Menu() {
       })
   }, [])
 
-  // Stagger animation al cambiar de tab
+  // Stagger animation al cambiar de tab — respeta prefers-reduced-motion
   useEffect(() => {
     if (!gridRef.current) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const cards = gridRef.current.querySelectorAll('.product-card')
     if (cards.length === 0) return
 
     gsap.fromTo(
       cards,
-      { y: 24, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.45, stagger: 0.05, ease: 'power2.out' }
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.45, stagger: 0.045, ease: 'power3.out' }
     )
   }, [activeTab, products])
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Menu from './Menu'
@@ -7,119 +7,161 @@ import './App.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+const TAGLINE = 'Il Caffè Italiano nel corazón de Ñuñoa'
+
+// Taza de café con vapor — usada en hero y footer
+const CoffeeLogo = forwardRef<SVGSVGElement, { className: string }>(({ className }, ref) => (
+  <svg
+    ref={ref}
+    className={className}
+    viewBox="0 0 160 155"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    {/* Vapor */}
+    <path className="coffee-steam" d="M56,70 Q48,54 58,40 Q68,26 58,12" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/>
+    <path className="coffee-steam" d="M80,66 Q88,50 78,36 Q68,22 78,8"  stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/>
+    <path className="coffee-steam" d="M104,70 Q112,54 102,40 Q92,26 102,12" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"/>
+    {/* Borde superior taza */}
+    <ellipse cx="80" cy="80" rx="44" ry="10" fill="currentColor"/>
+    {/* Cuerpo taza */}
+    <path d="M38,80 L48,128 H112 L122,80 Z" fill="currentColor"/>
+    {/* Asa */}
+    <path d="M120,93 Q143,93 143,110 Q143,127 120,127" stroke="currentColor" strokeWidth="8" strokeLinecap="round" fill="none"/>
+    {/* Platillo */}
+    <ellipse cx="80" cy="132" rx="56" ry="10" fill="currentColor" opacity="0.8"/>
+  </svg>
+))
+CoffeeLogo.displayName = 'CoffeeLogo'
 
 export default function App() {
-  const navRef    = useRef<HTMLElement>(null)
-  const heroBgRef = useRef<HTMLDivElement>(null)
-  const logoRef   = useRef<HTMLImageElement>(null)
-  const steamRef  = useRef<SVGSVGElement>(null)
+  const navRef     = useRef<HTMLElement>(null)
+  const heroBgRef  = useRef<HTMLDivElement>(null)
+  const logoRef    = useRef<SVGSVGElement>(null)   // hero logo + steam
+  const taglineRef = useRef<HTMLParagraphElement>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    // ── Navbar: oscurecer al scrollear ───────────────────────────
-    ScrollTrigger.create({
+    // ── Navbar: oscurecer al scrollear (la transición vive en CSS) ─
+    const navTrigger = ScrollTrigger.create({
       start: 'top -80',
-      onEnter: () =>
-        gsap.to(navRef.current, {
-          backgroundColor: 'rgba(44,24,16,0.98)',
-          boxShadow: '0 2px 20px rgba(0,0,0,0.4)',
-          duration: 0.3,
-        }),
-      onLeaveBack: () =>
-        gsap.to(navRef.current, {
-          backgroundColor: 'rgba(44,24,16,0.85)',
-          boxShadow: 'none',
-          duration: 0.3,
-        }),
+      onEnter: () => navRef.current?.classList.add('navbar--scrolled'),
+      onLeaveBack: () => navRef.current?.classList.remove('navbar--scrolled'),
     })
 
-    // ── Hero parallax ────────────────────────────────────────────
-    gsap.to(heroBgRef.current, {
-      yPercent: 20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    })
+    const mm = gsap.matchMedia()
 
-    // ── Logo entrance ────────────────────────────────────────────
-    gsap.fromTo(
-      logoRef.current,
-      { y: 30, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out', delay: 0.3 }
-    )
+    // ── Animaciones completas — solo sin preferencia de movimiento reducido ─
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Hero parallax
+      gsap.to(heroBgRef.current, {
+        yPercent: 20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
 
-    // ── Steam (vapor de café) ────────────────────────────────────
-    const steamPaths = steamRef.current?.querySelectorAll('path')
-    if (steamPaths && steamPaths.length > 0) {
-      gsap.fromTo(
-        steamPaths,
-        { y: 0, opacity: 0.75 },
-        {
-          y: -55,
-          opacity: 0,
-          duration: 2.2,
-          stagger: 0.55,
-          repeat: -1,
-          ease: 'power1.inOut',
-        }
+      // Entrada del hero: logo → tagline → CTAs, en un solo timeline
+      const chars = taglineRef.current?.querySelectorAll('.char')
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.25 })
+
+      tl.fromTo(
+        logoRef.current,
+        { y: 28, opacity: 0, scale: 0.94 },
+        { y: 0, opacity: 1, scale: 1, duration: 1.1 }
       )
-    }
 
-    // ── Secciones fade-in al scroll ──────────────────────────────
-    gsap.utils.toArray<Element>('.fade-section').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.9,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%' },
-        }
+      if (chars && chars.length > 0) {
+        tl.fromTo(
+          chars,
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.035, ease: 'power2.out' },
+          '-=0.55'
+        )
+      }
+
+      tl.fromTo(
+        '.hero__ctas .btn',
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 },
+        '-=0.4'
       )
-    })
 
-    // ── Cards "Sobre Nosotros" con stagger ───────────────────────
-    const aboutCards = gsap.utils.toArray<Element>('.about-card')
-    if (aboutCards.length > 0) {
+      // Steam (vapor de la taza) — loop infinito
+      const steamPaths = logoRef.current?.querySelectorAll('.coffee-steam')
+      if (steamPaths && steamPaths.length > 0) {
+        gsap.fromTo(
+          steamPaths,
+          { y: 0, opacity: 0.8 },
+          {
+            y: -55,
+            opacity: 0,
+            duration: 2.2,
+            stagger: 0.55,
+            repeat: -1,
+            ease: 'sine.inOut',
+          }
+        )
+      }
+
+      // Secciones fade-in al scroll
+      gsap.utils.toArray<Element>('.fade-section').forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: 36, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%' },
+          }
+        )
+      })
+
+      // Cards "Sobre Nosotros" con stagger
       gsap.fromTo(
-        aboutCards,
-        { y: 40, opacity: 0 },
+        '.about-card',
+        { y: 36, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.6,
-          stagger: 0.12,
-          ease: 'power2.out',
+          stagger: 0.1,
+          ease: 'power3.out',
           scrollTrigger: { trigger: '.about__cards', start: 'top 85%' },
         }
       )
-    }
 
-    // ── Galería: items con stagger ───────────────────────────────
-    const galleryItems = gsap.utils.toArray<Element>('.gallery__item')
-    if (galleryItems.length > 0) {
+      // Galería: items con stagger
       gsap.fromTo(
-        galleryItems,
+        '.gallery__item',
         { scale: 0.96, opacity: 0 },
         {
           scale: 1,
           opacity: 1,
-          duration: 0.55,
+          duration: 0.6,
           stagger: 0.1,
-          ease: 'power2.out',
+          ease: 'power3.out',
           scrollTrigger: { trigger: '.gallery__grid', start: 'top 85%' },
         }
       )
-    }
+    })
+
+    // ── Movimiento reducido: contenido visible, sin animaciones JS ─
+    mm.add('(prefers-reduced-motion: reduce)', () => {
+      gsap.set([logoRef.current, '.hero__tagline .char'], { opacity: 1 })
+    })
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill())
+      navTrigger.kill()
+      mm.revert()
     }
   }, [])
 
@@ -170,29 +212,22 @@ export default function App() {
         <div className="hero__overlay" />
 
         <div className="hero__content">
-          {/* Vapor de café subiendo */}
-          <svg
-            ref={steamRef}
-            className="hero__steam"
-            viewBox="0 0 220 100"
-            aria-hidden="true"
-            focusable="false"
+          <CoffeeLogo ref={logoRef} className="hero__logo" />
+
+          <p
+            ref={taglineRef}
+            className="hero__tagline"
+            aria-label={TAGLINE}
           >
-            <path d="M40,90 Q32,70 44,55 Q56,40 40,18" />
-            <path d="M90,95 Q100,75 86,60 Q72,45 90,22" />
-            <path d="M140,92 Q130,72 142,57 Q154,42 140,18" />
-            <path d="M185,88 Q196,68 182,53 Q168,38 185,16" />
-          </svg>
-
-          <img
-            ref={logoRef}
-            src="/media/logo.webp"
-            alt="Taschino — Cafetería Italiana"
-            className="hero__logo"
-          />
-
-          <p className="hero__tagline">
-            <em>Il Caffè Italiano nel corazón de Ñuñoa</em>
+            {TAGLINE.split('').map((char, i) => (
+              <span
+                key={i}
+                className={`char${char === ' ' ? ' char--space' : ''}`}
+                aria-hidden="true"
+              >
+                {char}
+              </span>
+            ))}
           </p>
 
           <div className="hero__ctas">
@@ -311,11 +346,7 @@ export default function App() {
       {/* ─── FOOTER ─────────────────────────────────────────────── */}
       <footer id="contacto" className="footer">
         <div className="footer__inner container">
-          <img
-            src="/media/logo.webp"
-            alt="Taschino"
-            className="footer__logo"
-          />
+          <CoffeeLogo className="footer__logo" />
 
           <div className="footer__social">
             <a
