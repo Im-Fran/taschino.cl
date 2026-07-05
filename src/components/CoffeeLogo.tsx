@@ -14,10 +14,12 @@ const CoffeeLogo = forwardRef<SVGSVGElement, { className: string }>(({ className
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {/* Vapor — nace junto al borde de la taza (Hero lo anima con GSAP) */}
-    <path className="coffee-steam" d="M58,66 Q50,53 58,41 Q66,29 58,17" strokeWidth="4" />
-    <path className="coffee-steam" d="M78,62 Q86,48 78,36 Q70,24 78,10" strokeWidth="4" />
-    <path className="coffee-steam" d="M98,66 Q106,53 98,41 Q90,29 98,17" strokeWidth="4" />
+    {/* Vapor — 3 wisps distintos (largo, amplitud, grosor y opacidad base) que nacen
+        justo sobre el borde de la taza (y≈72.5). Hero los anima por índice con GSAP;
+        estáticos también se ven bien (footer usa el logo sin animación) */}
+    <path className="coffee-steam" d="M62,70 C55,61 67,54 60,45 C56,40 52,37 53,31" strokeWidth="3" opacity="0.5" />
+    <path className="coffee-steam" d="M79,71 C71,60 88,50 79,38 C71,27 87,20 80,8" strokeWidth="4" opacity="0.7" />
+    <path className="coffee-steam" d="M95,70 C102,61 89,53 97,44 C102,38 106,35 104,28" strokeWidth="3.5" opacity="0.58" />
 
     {/* Café dentro de la taza — fill sutil */}
     <ellipse cx="78" cy="80" rx="34" ry="7.5" fill="currentColor" opacity="0.15" stroke="none" />
