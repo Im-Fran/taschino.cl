@@ -1,16 +1,16 @@
-/* Reset base — el scaffold de Vite se reemplaza completamente */
+/* ─── Reset y base global ───────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 64px; /* compensa el navbar fijo en anclas */
+  scroll-padding-top: 72px; /* compensa el navbar fijo en anclas */
 }
 
 body {
   margin: 0;
-  font-family: 'Lato', system-ui, sans-serif;
+  font-family: 'Outfit', system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -19,7 +19,6 @@ body {
   color: #1A0E08;
 }
 
-/* Eliminar restricciones del scaffold */
 #root {
   width: 100%;
   max-width: 100%;

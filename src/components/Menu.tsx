@@ -105,8 +105,9 @@ export default function Menu() {
   const visible = products.filter((p) => categorize(p.name) === activeTab)
 
   return (
-    <section id="menu" className="menu">
+    <section id="menu" className="menu fade-section">
       <div className="container">
+        <p className="section-kicker">Per te</p>
         <h2 className="section-title">Nuestra Carta</h2>
 
         <div className="menu__tabs" role="tablist" aria-label="Categorías del menú">
@@ -132,18 +133,20 @@ export default function Menu() {
         >
           {visible.map((product, i) => (
             <article key={`${product.name}-${i}`} className="product-card">
-              <p className="product-card__name">{product.name.toLowerCase()}</p>
+              {/* Línea punteada entre nombre y precio, estilo carta de café */}
+              <div className="product-card__row">
+                <p className="product-card__name">{product.name.toLowerCase()}</p>
+                <span className="product-card__dots" aria-hidden="true" />
+                <p className="product-card__price">{product.precio}</p>
+              </div>
               {product.descripcion && (
                 <p className="product-card__desc">{product.descripcion.toLowerCase()}</p>
               )}
-              <p className="product-card__price">{product.precio}</p>
             </article>
           ))}
 
           {products.length > 0 && visible.length === 0 && (
-            <p style={{ color: 'var(--text-light)', gridColumn: '1/-1', textAlign: 'center', padding: '32px 0' }}>
-              Sin productos en esta categoría.
-            </p>
+            <p className="menu__empty">Sin productos en esta categoría.</p>
           )}
         </div>
       </div>
