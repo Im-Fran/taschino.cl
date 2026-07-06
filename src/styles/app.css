@@ -857,6 +857,45 @@
   color: rgba(255, 255, 255, 0.45);
 }
 
+.footer__dev {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer__dev a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+
+/* Animación footer link */
+.footer__dev a {
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* Animacion underline link footer dev from left to right ease in out */
+.footer__dev a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1.5px;
+  background: var(--caramel);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+.footer__dev a:hover::after,
+.footer__dev a:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
 /* ─── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   :root {

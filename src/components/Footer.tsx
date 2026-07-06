@@ -20,7 +20,9 @@ export default function Footer() {
         </div>
 
         <p className="footer__copy">
-          © 2025 Taschino · Todos los derechos reservados
+          <span>© {new Date().getFullYear()} Taschino · Todos los derechos reservados</span>
+          <br/>
+          <span className="footer__dev">Desarrollado con ☕️ por&nbsp;<a href="https://fsolism.cl/?utm_source=taschino&utm_medium=footer" target="_blank" rel="noopener noreferrer">Francisco Solís Maturana</a></span>
         </p>
       </div>
     </footer>
