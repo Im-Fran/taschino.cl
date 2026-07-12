@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 const PHOTOS = [
@@ -9,6 +9,9 @@ const PHOTOS = [
 ]
 
 export default function Gallery() {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const [active, setActive] = useState<{ src: string; alt: string } | null>(null)
+
   useEffect(() => {
     const mm = gsap.matchMedia()
     mm.add('(prefers-reduced-motion: no-preference)', () => {
@@ -28,19 +31,56 @@ export default function Gallery() {
     return () => mm.revert()
   }, [])
 
+  function openLightbox(photo: { src: string; alt: string }) {
+    setActive(photo)
+    dialogRef.current?.showModal()
+  }
+
+  function closeLightbox() {
+    dialogRef.current?.close()
+  }
+
   return (
     <section id="galeria" className="gallery fade-section">
       <div className="container">
         <p className="section-kicker">Benvenuti</p>
         <h2 className="section-title">Nuestro Espacio</h2>
         <div className="gallery__grid">
-          {PHOTOS.map(({ src, alt }) => (
-            <div key={src} className="gallery__item">
-              <img src={src} alt={alt} loading="lazy" />
-            </div>
+          {PHOTOS.map((photo) => (
+            <button
+              key={photo.src}
+              type="button"
+              className="gallery__item"
+              onClick={() => openLightbox(photo)}
+              aria-label={`Ampliar imagen: ${photo.alt}`}
+            >
+              <img src={photo.src} alt={photo.alt} loading="lazy" />
+            </button>
           ))}
         </div>
       </div>
+
+      {/* Lightbox nativo: <dialog> maneja Escape y el backdrop solo */}
+      <dialog
+        ref={dialogRef}
+        className="lightbox"
+        onClose={() => setActive(null)}
+        onClick={(e) => {
+          if (e.target === dialogRef.current) closeLightbox()
+        }}
+        aria-label={active ? active.alt : 'Imagen ampliada'}
+      >
+        <button
+          type="button"
+          className="lightbox__close"
+          onClick={closeLightbox}
+          aria-label="Cerrar imagen ampliada"
+          autoFocus
+        >
+          ✕
+        </button>
+        {active && <img src={active.src} alt={active.alt} className="lightbox__img" />}
+      </dialog>
     </section>
   )
 }
