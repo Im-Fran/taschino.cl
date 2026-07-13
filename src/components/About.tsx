@@ -43,7 +43,7 @@ export default function About() {
     <section id="nosotros" className="about fade-section">
       <div className="about__inner container">
         <div className="about__cards">
-          <p className="section-kicker">Nuestra casa</p>
+          <p className="section-kicker">Casa nostra</p>
           <h2 className="section-title section-title--left">Sobre Nosotros</h2>
 
           {CARDS.map(({ icon, title, text }) => (
