@@ -1,15 +1,16 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { Link } from 'react-router-dom'
 import CoffeeLogo from './CoffeeLogo'
-import { useIsActiveSlide, useSlideNav } from '../slides/useSlideNav'
+import { useSlides } from '../slides/SlideContext'
 
 const TAGLINE = 'Il Caffè Italiano nel corazón de Ñuñoa'
 
 export default function Hero() {
   const logoRef    = useRef<HTMLDivElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
-  const isActive   = useIsActiveSlide('inicio')
-  const { goToSlide } = useSlideNav()
+  const { activeIndex, slideIds, goToSlide } = useSlides()
+  const isActive = slideIds[activeIndex] === 'inicio'
 
   useEffect(() => {
     // Ya no hay scroll de documento que scrubear: la entrada se dispara
@@ -86,7 +87,7 @@ export default function Hero() {
         </p>
 
         <div className="hero__ctas">
-          <a href="#menu" className="btn btn--primary" onClick={(e) => { e.preventDefault(); goToSlide('menu') }}>Ver Menú</a>
+          <Link to="/carta" className="btn btn--primary">Ver Menú</Link>
           <a href="#horarios" className="btn btn--outline" onClick={(e) => { e.preventDefault(); goToSlide('horarios') }}>Encuéntranos</a>
         </div>
       </div>

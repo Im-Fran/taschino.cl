@@ -1,29 +1,45 @@
 import { useState } from 'react'
-import { useSlideNav } from '../slides/useSlideNav'
+import { Link, useLocation } from 'react-router-dom'
+import { useSlidesOptional } from '../slides/SlideContext'
 
-const LINKS = [
-  { href: '#inicio',    id: 'inicio',    label: 'Inicio'    },
-  { href: '#menu',      id: 'menu',      label: 'Menú'      },
-  { href: '#nosotros',  id: 'nosotros',  label: 'Nosotros'  },
-  { href: '#instagram', id: 'instagram', label: 'Instagram' },
-  { href: '#horarios',  id: 'horarios',  label: 'Horarios'  },
-  { href: '#contacto',  id: 'contacto',  label: 'Contacto'  },
+type NavLink =
+  | { type: 'slide'; id: string; label: string }
+  | { type: 'route'; to: string; label: string }
+
+const LINKS: NavLink[] = [
+  { type: 'slide', id: 'inicio',    label: 'Inicio'    },
+  { type: 'route', to: '/carta',    label: 'Menú'      },
+  { type: 'slide', id: 'nosotros',  label: 'Nosotros'  },
+  { type: 'slide', id: 'instagram', label: 'Instagram' },
+  { type: 'slide', id: 'horarios',  label: 'Horarios'  },
 ]
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { activeIndex, goToSlide } = useSlideNav()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  // Fuera de '/' el Provider no existe (Navbar vive en el Layout, fuera de HomePage);
+  // useSlidesOptional no explota, solo devuelve null.
+  const slides = useSlidesOptional()
 
   return (
     <nav
-      className={`navbar${activeIndex > 0 ? ' navbar--scrolled' : ''}`}
+      className={`navbar${slides && slides.activeIndex > 0 ? ' navbar--scrolled' : ''}`}
       role="navigation"
       aria-label="Navegación principal"
     >
-      <a href="#inicio" className="navbar__brand" onClick={(e) => { e.preventDefault(); goToSlide('inicio') }}>
+      <Link
+        to="/#inicio"
+        className="navbar__brand"
+        onClick={(e) => {
+          if (!isHome) return
+          e.preventDefault()
+          slides?.goToSlide('inicio')
+        }}
+      >
         {/* ponytail: logo CSS puro, reemplaza /media/logo.webp */}
         <span className="navbar__logo-css" aria-label="Taschino">TASCHINO</span>
-      </a>
+      </Link>
 
       <button
         className={`navbar__hamburger${mobileOpen ? ' open' : ''}`}
@@ -37,18 +53,28 @@ export default function Navbar() {
       </button>
 
       <ul className={`navbar__links${mobileOpen ? ' open' : ''}`}>
-        {LINKS.map(({ href, id, label }) => (
-          <li key={href}>
-            <a
-              href={href}
-              onClick={(e) => {
-                e.preventDefault()
-                setMobileOpen(false)
-                goToSlide(id)
-              }}
-            >
-              {label}
-            </a>
+        {LINKS.map((link) => (
+          <li key={link.type === 'slide' ? link.id : link.to}>
+            {link.type === 'route' ? (
+              <Link to={link.to} onClick={() => setMobileOpen(false)}>
+                {link.label}
+              </Link>
+            ) : isHome ? (
+              <a
+                href={`#${link.id}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  setMobileOpen(false)
+                  slides?.goToSlide(link.id)
+                }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link to={`/#${link.id}`} onClick={() => setMobileOpen(false)}>
+                {link.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
