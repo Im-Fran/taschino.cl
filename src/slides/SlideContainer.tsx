@@ -1,16 +1,6 @@
 import { useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { SlideContext, type SlideContextValue } from './SlideContext'
-
-// Mismos labels que el Navbar, mapeados por id (sin '#') para el anuncio aria-live.
-const SLIDE_LABELS: Record<string, string> = {
-  inicio: 'Inicio',
-  menu: 'Menú',
-  nosotros: 'Nosotros',
-  galeria: 'Galería',
-  instagram: 'Instagram',
-  horarios: 'Horarios',
-  contacto: 'Contacto',
-}
+import { SLIDE_LABELS } from './variants'
 
 interface SlideContainerProps {
   children: ReactNode
@@ -67,7 +57,8 @@ export default function SlideContainer({ children }: SlideContainerProps) {
 
   function goToSlide(id: string) {
     const el = slidesRef.current.get(id)
-    el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'start' })
   }
 
   function registerSlide(id: string, el: HTMLElement) {

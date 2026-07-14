@@ -14,6 +14,7 @@ export default function Slide({ id, children, scrollInternal = false, className,
   const ref = useRef<HTMLElement>(null)
   const ctx = useContext(SlideContext)
   if (!ctx) throw new Error('<Slide> debe usarse dentro de <SlideContainer>')
+  const isActive = ctx.activeId === id
 
   useLayoutEffect(() => {
     const el = ref.current
@@ -28,7 +29,7 @@ export default function Slide({ id, children, scrollInternal = false, className,
     .join(' ')
 
   return (
-    <section id={id} ref={ref} className={classes} {...rest}>
+    <section id={id} ref={ref} className={classes} inert={!isActive || undefined} {...rest}>
       {children}
     </section>
   )

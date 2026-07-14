@@ -1,14 +1,5 @@
 import { useSlideNav } from './useSlideNav'
-
-const SLIDE_LABELS: Record<string, string> = {
-  inicio: 'Inicio',
-  menu: 'Menú',
-  nosotros: 'Nosotros',
-  galeria: 'Galería',
-  instagram: 'Instagram',
-  horarios: 'Horarios',
-  contacto: 'Contacto',
-}
+import { SLIDE_LABELS } from './variants'
 
 export default function SlideDots() {
   const { ids, activeId, goToSlide } = useSlideNav()

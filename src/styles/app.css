@@ -50,7 +50,7 @@
 /* Permite scroll interno propio (Menu, Hours) sin escapar del snap del padre */
 .slide--scroll-internal {
   overflow-y: auto;
-  scroll-snap-stop: normal;
+  scroll-snap-stop: always;
 }
 
 /* Nav lateral de puntos — oculto en mobile muy angosto para no tapar contenido */
@@ -994,9 +994,6 @@
 
 .footer__inner {
   width: 100%;
-}
-
-.footer__inner {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -14,8 +14,8 @@ import './styles/app.css'
 export default function App() {
   return (
     <>
-      <Navbar />
       <SlideContainer>
+        <Navbar />
         <Slide id="inicio">
           <Hero />
         </Slide>
@@ -37,8 +37,8 @@ export default function App() {
         <Slide id="contacto">
           <Footer />
         </Slide>
+        <SlideDots />
       </SlideContainer>
-      <SlideDots />
     </>
   )
 }
