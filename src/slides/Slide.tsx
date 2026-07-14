@@ -4,13 +4,11 @@ import { SlideContext } from './SlideContext'
 interface SlideProps {
   id: string
   children: ReactNode
-  /** Permite scroll interno propio (contenido más alto que 100dvh) sin romper el snap del padre. */
-  scrollInternal?: boolean
   className?: string
   'aria-label'?: string
 }
 
-export default function Slide({ id, children, scrollInternal = false, className, ...rest }: SlideProps) {
+export default function Slide({ id, children, className, ...rest }: SlideProps) {
   const ref = useRef<HTMLElement>(null)
   const ctx = useContext(SlideContext)
   if (!ctx) throw new Error('<Slide> debe usarse dentro de <SlideContainer>')
@@ -24,9 +22,7 @@ export default function Slide({ id, children, scrollInternal = false, className,
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  const classes = ['slide', scrollInternal ? 'slide--scroll-internal' : '', className]
-    .filter(Boolean)
-    .join(' ')
+  const classes = ['slide', className].filter(Boolean).join(' ')
 
   return (
     <section id={id} ref={ref} className={classes} inert={!isActive || undefined} {...rest}>

@@ -29,8 +29,11 @@
 .slide-container {
   height: 100dvh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+  /* Deja que el remanente del gesto escape al documento (footer) una vez
+     agotado el scroll interno, en vez de atraparlo (crítico en iOS Safari). */
+  overscroll-behavior-y: contain;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -44,11 +47,8 @@
   height: 100dvh;
   flex-shrink: 0;
   scroll-snap-align: start;
-  overflow: hidden;
-}
-
-/* Permite scroll interno propio (Menu, Hours) sin escapar del snap del padre */
-.slide--scroll-internal {
+  /* Todas las slides pueden scrollear su propio contenido si excede 100dvh
+     (antes solo Menu/Hours vía scrollInternal; angosto+alto quedaba recortado). */
   overflow-y: auto;
   scroll-snap-stop: always;
 }

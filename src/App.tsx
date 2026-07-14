@@ -19,7 +19,7 @@ export default function App() {
         <Slide id="inicio">
           <Hero />
         </Slide>
-        <Slide id="menu" scrollInternal>
+        <Slide id="menu">
           <Menu />
         </Slide>
         <Slide id="nosotros">
@@ -31,7 +31,7 @@ export default function App() {
         <Slide id="instagram">
           <Instagram />
         </Slide>
-        <Slide id="horarios" scrollInternal>
+        <Slide id="horarios">
           <Hours />
         </Slide>
         <SlideDots />
