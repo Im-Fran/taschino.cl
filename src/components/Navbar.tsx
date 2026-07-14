@@ -1,32 +1,26 @@
-import { useEffect, useRef, useState } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useState } from 'react'
+import { useSlideNav } from '../slides/useSlideNav'
 
 const LINKS = [
-  { href: '#inicio',    label: 'Inicio'    },
-  { href: '#menu',      label: 'Menú'      },
-  { href: '#nosotros',  label: 'Nosotros'  },
-  { href: '#instagram', label: 'Instagram' },
-  { href: '#horarios',  label: 'Horarios'  },
-  { href: '#contacto',  label: 'Contacto'  },
+  { href: '#inicio',    id: 'inicio',    label: 'Inicio'    },
+  { href: '#menu',      id: 'menu',      label: 'Menú'      },
+  { href: '#nosotros',  id: 'nosotros',  label: 'Nosotros'  },
+  { href: '#instagram', id: 'instagram', label: 'Instagram' },
+  { href: '#horarios',  id: 'horarios',  label: 'Horarios'  },
+  { href: '#contacto',  id: 'contacto',  label: 'Contacto'  },
 ]
 
 export default function Navbar() {
-  const navRef = useRef<HTMLElement>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
-
-  useEffect(() => {
-    // Oscurecer al scrollear — la transición vive en CSS
-    const trigger = ScrollTrigger.create({
-      start: 'top -80',
-      onEnter: () => navRef.current?.classList.add('navbar--scrolled'),
-      onLeaveBack: () => navRef.current?.classList.remove('navbar--scrolled'),
-    })
-    return () => trigger.kill()
-  }, [])
+  const { activeIndex, goToSlide } = useSlideNav()
 
   return (
-    <nav ref={navRef} className="navbar" role="navigation" aria-label="Navegación principal">
-      <a href="#inicio" className="navbar__brand">
+    <nav
+      className={`navbar${activeIndex > 0 ? ' navbar--scrolled' : ''}`}
+      role="navigation"
+      aria-label="Navegación principal"
+    >
+      <a href="#inicio" className="navbar__brand" onClick={(e) => { e.preventDefault(); goToSlide('inicio') }}>
         {/* ponytail: logo CSS puro, reemplaza /media/logo.webp */}
         <span className="navbar__logo-css" aria-label="Taschino">TASCHINO</span>
       </a>
@@ -43,9 +37,16 @@ export default function Navbar() {
       </button>
 
       <ul className={`navbar__links${mobileOpen ? ' open' : ''}`}>
-        {LINKS.map(({ href, label }) => (
+        {LINKS.map(({ href, id, label }) => (
           <li key={href}>
-            <a href={href} onClick={() => setMobileOpen(false)}>
+            <a
+              href={href}
+              onClick={(e) => {
+                e.preventDefault()
+                setMobileOpen(false)
+                goToSlide(id)
+              }}
+            >
               {label}
             </a>
           </li>

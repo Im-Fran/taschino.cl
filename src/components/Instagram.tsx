@@ -1,10 +1,22 @@
+import { motion, useReducedMotion } from 'motion/react'
+import { getSlideVariants } from '../slides/variants'
+import { useIsActiveSlide } from '../slides/useSlideNav'
+
 const INSTAGRAM_URL = 'https://www.instagram.com/taschino_cafe'
 
 // ponytail: embed sin API; si Instagram lo bloquea, migrar a Behold.so o Graph API
 export default function Instagram() {
+  const isActive = useIsActiveSlide('instagram')
+  const reduced = useReducedMotion()
+
   return (
-    <section id="instagram" className="instagram fade-section">
-      <div className="container">
+    <section className="instagram">
+      <motion.div
+        className="container"
+        variants={getSlideVariants(!!reduced)}
+        initial="hidden"
+        animate={isActive ? 'visible' : 'hidden'}
+      >
         <p className="section-kicker">@taschino_cafe</p>
         <h2 className="section-title">Síguenos en Instagram</h2>
 
@@ -27,7 +39,7 @@ export default function Instagram() {
             Seguir @taschino_cafe
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

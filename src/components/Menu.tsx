@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { motion, useReducedMotion } from 'motion/react'
+import { getSlideVariants } from '../slides/variants'
+import { useIsActiveSlide } from '../slides/useSlideNav'
 
 interface Product {
   name: string
@@ -77,6 +80,8 @@ export default function Menu() {
   const [activeTab, setActiveTab] = useState('cafes')
   const [products, setProducts] = useState<Product[]>([])
   const gridRef = useRef<HTMLDivElement>(null)
+  const isActive = useIsActiveSlide('menu')
+  const reduced = useReducedMotion()
 
   // Carga productos desde public/
   useEffect(() => {
@@ -105,8 +110,13 @@ export default function Menu() {
   const visible = products.filter((p) => categorize(p.name) === activeTab)
 
   return (
-    <section id="menu" className="menu fade-section">
-      <div className="container">
+    <section className="menu">
+      <motion.div
+        className="container"
+        variants={getSlideVariants(!!reduced)}
+        initial="hidden"
+        animate={isActive ? 'visible' : 'hidden'}
+      >
         <p className="section-kicker">Per te</p>
         <h2 className="section-title">Nuestra Carta</h2>
 
@@ -149,7 +159,7 @@ export default function Menu() {
             <p className="menu__empty">Sin productos en esta categoría.</p>
           )}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

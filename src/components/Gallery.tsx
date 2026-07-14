@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
+import { useRef, useState } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
+import { getSlideVariants } from '../slides/variants'
+import { useIsActiveSlide } from '../slides/useSlideNav'
 
 const PHOTOS = [
   { src: '/media/taschino.webp',           alt: 'Interior de Taschino'     },
@@ -11,25 +13,8 @@ const PHOTOS = [
 export default function Gallery() {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [active, setActive] = useState<{ src: string; alt: string } | null>(null)
-
-  useEffect(() => {
-    const mm = gsap.matchMedia()
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(
-        '.gallery__item',
-        { scale: 0.96, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: '.gallery__grid', start: 'top 85%' },
-        }
-      )
-    })
-    return () => mm.revert()
-  }, [])
+  const isActive = useIsActiveSlide('galeria')
+  const reduced = useReducedMotion()
 
   function openLightbox(photo: { src: string; alt: string }) {
     setActive(photo)
@@ -41,8 +26,13 @@ export default function Gallery() {
   }
 
   return (
-    <section id="galeria" className="gallery fade-section">
-      <div className="container">
+    <section className="gallery">
+      <motion.div
+        className="container"
+        variants={getSlideVariants(!!reduced)}
+        initial="hidden"
+        animate={isActive ? 'visible' : 'hidden'}
+      >
         <p className="section-kicker">Benvenuti</p>
         <h2 className="section-title">Nuestro Espacio</h2>
         <div className="gallery__grid">
@@ -58,7 +48,7 @@ export default function Gallery() {
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Lightbox nativo: <dialog> maneja Escape y el backdrop solo */}
       <dialog

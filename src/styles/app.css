@@ -25,6 +25,84 @@
   --section-py: 120px;
 }
 
+/* ─── Slides full-page (scroll-snap) ────────────────────────────── */
+.slide-container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-container {
+    scroll-behavior: auto;
+  }
+}
+
+.slide {
+  position: relative;
+  height: 100dvh;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+/* Permite scroll interno propio (Menu, Hours) sin escapar del snap del padre */
+.slide--scroll-internal {
+  overflow-y: auto;
+  scroll-snap-stop: normal;
+}
+
+/* Nav lateral de puntos — oculto en mobile muy angosto para no tapar contenido */
+.slide-dots {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slide-dots__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  padding: 0;
+  background: rgba(44, 24, 16, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.slide-dots__dot:hover {
+  transform: scale(1.2);
+}
+
+.slide-dots__dot--active {
+  background: var(--caramel);
+  border-color: var(--caramel);
+}
+
+@media (max-width: 480px) {
+  .slide-dots {
+    display: none;
+  }
+}
+
+/* Accesibilidad: oculto visualmente, disponible para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ─── Utilidades ────────────────────────────────────────────────── */
 .container {
   width: 100%;
@@ -233,10 +311,10 @@
 }
 
 /* ─── Hero ──────────────────────────────────────────────────────── */
+/* El slide padre (.slide) ya define height:100dvh; .hero solo llena ese espacio */
 .hero {
-  position: relative;
-  height: 100vh;
-  min-height: 620px;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -437,7 +515,11 @@
 
 /* ─── Sobre Nosotros ────────────────────────────────────────────── */
 .about {
-  padding: var(--section-py) 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  padding: 32px 0;
   background: var(--cream);
 }
 
@@ -530,7 +612,8 @@
    de la identidad de marca. */
 .menu {
   position: relative;
-  padding: calc(var(--section-py) + 16px) 0 var(--section-py);
+  min-height: 100%;
+  padding: 40px 0 48px;
   background: var(--latte);
 }
 
@@ -660,7 +743,11 @@
 
 /* ─── Galería ───────────────────────────────────────────────────── */
 .gallery {
-  padding: var(--section-py) 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  padding: 32px 0;
   background: var(--cream);
 }
 
@@ -761,7 +848,11 @@
 
 /* ─── Instagram ─────────────────────────────────────────────────── */
 .instagram {
-  padding: var(--section-py) 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  padding: 32px 0;
   background: var(--latte);
 }
 
@@ -791,7 +882,8 @@
 
 /* ─── Horarios y Ubicación ──────────────────────────────────────── */
 .hours {
-  padding: var(--section-py) 0;
+  min-height: 100%;
+  padding: 40px 0 48px;
   background: var(--cream);
 }
 
@@ -891,9 +983,17 @@
 
 /* ─── Footer ────────────────────────────────────────────────────── */
 .footer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
   background: var(--espresso);
-  padding: 64px 0 40px;
+  padding: 40px 0;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.footer__inner {
+  width: 100%;
 }
 
 .footer__inner {

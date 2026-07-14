@@ -2,7 +2,7 @@ import CoffeeLogo from './CoffeeLogo'
 
 export default function Footer() {
   return (
-    <footer id="contacto" className="footer">
+    <footer className="footer">
       <div className="footer__inner container">
         <CoffeeLogo className="footer__logo" />
 
