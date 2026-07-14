@@ -19,7 +19,7 @@ export default function SlideContainer({ children }: SlideContainerProps) {
   useLayoutEffect(() => {
     const hash = window.location.hash.replace('#', '')
     if (!hash) return
-    const el = slidesRef.current.get(hash)
+    const el = slidesRef.current.get(hash) ?? document.getElementById(hash)
     el?.scrollIntoView({ behavior: 'instant', block: 'start' })
   }, [])
 
@@ -56,7 +56,8 @@ export default function SlideContainer({ children }: SlideContainerProps) {
   }, [activeId])
 
   function goToSlide(id: string) {
-    const el = slidesRef.current.get(id)
+    // ponytail: fallback a getElementById para destinos fuera del snap (ej. footer/contacto)
+    const el = slidesRef.current.get(id) ?? document.getElementById(id)
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     el?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'start' })
   }

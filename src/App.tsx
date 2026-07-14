@@ -34,11 +34,9 @@ export default function App() {
         <Slide id="horarios" scrollInternal>
           <Hours />
         </Slide>
-        <Slide id="contacto">
-          <Footer />
-        </Slide>
         <SlideDots />
       </SlideContainer>
+      <Footer />
     </>
   )
 }
