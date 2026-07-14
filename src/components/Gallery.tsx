@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { getSlideVariants } from '../slides/variants'
-import { useIsActiveSlide } from '../slides/useSlideNav'
+import { useSlides } from '../slides/SlideContext'
 
 const PHOTOS = [
   { src: '/media/taschino.webp',           alt: 'Interior de Taschino'     },
@@ -13,7 +13,8 @@ const PHOTOS = [
 export default function Gallery() {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [active, setActive] = useState<{ src: string; alt: string } | null>(null)
-  const isActive = useIsActiveSlide('galeria')
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === 'galeria'
   const reduced = useReducedMotion()
 
   function openLightbox(photo: { src: string; alt: string }) {

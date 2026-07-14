@@ -1,31 +1,17 @@
-import { useContext, useLayoutEffect, useRef, type ReactNode } from 'react'
-import { SlideContext } from './SlideContext'
+import type { ReactNode } from 'react'
+import { useSlides } from './SlideContext'
 
 interface SlideProps {
   id: string
   children: ReactNode
-  className?: string
-  'aria-label'?: string
 }
 
-export default function Slide({ id, children, className, ...rest }: SlideProps) {
-  const ref = useRef<HTMLElement>(null)
-  const ctx = useContext(SlideContext)
-  if (!ctx) throw new Error('<Slide> debe usarse dentro de <SlideContainer>')
-  const isActive = ctx.activeId === id
-
-  useLayoutEffect(() => {
-    const el = ref.current
-    if (!el) return
-    return ctx.registerSlide(id, el)
-    // ponytail: registerSlide es estable via useMemo del padre, no hace falta en deps
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id])
-
-  const classes = ['slide', className].filter(Boolean).join(' ')
+export default function Slide({ id, children }: SlideProps) {
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === id
 
   return (
-    <section id={id} ref={ref} className={classes} inert={!isActive || undefined} {...rest}>
+    <section id={id} className="slide" inert={!isActive || undefined}>
       {children}
     </section>
   )

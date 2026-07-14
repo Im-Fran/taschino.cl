@@ -1,14 +1,13 @@
-import { useSlideNav } from './useSlideNav'
-import { SLIDE_LABELS } from './variants'
+import { SLIDE_LABELS, useSlides } from './SlideContext'
 
 export default function SlideDots() {
-  const { ids, activeId, goToSlide } = useSlideNav()
+  const { slideIds, activeIndex, goToSlide } = useSlides()
 
   return (
     <nav className="slide-dots" aria-label="Navegación de secciones">
-      {ids.map((id) => {
+      {slideIds.map((id, index) => {
         const label = SLIDE_LABELS[id] ?? id
-        const isActive = id === activeId
+        const isActive = index === activeIndex
         return (
           <button
             key={id}

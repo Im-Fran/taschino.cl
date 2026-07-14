@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { getSlideVariants } from '../slides/variants'
-import { useIsActiveSlide } from '../slides/useSlideNav'
+import { useSlides } from '../slides/SlideContext'
 
 const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 
 export default function Hours() {
-  const isActive = useIsActiveSlide('horarios')
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === 'horarios'
   const reduced = useReducedMotion()
+  const [mapUnlocked, setMapUnlocked] = useState(false)
 
   return (
     <section className="hours">
@@ -50,7 +53,16 @@ export default function Hours() {
               title="Ubicación de Taschino en Google Maps"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              style={mapUnlocked ? { pointerEvents: 'auto' } : undefined}
             />
+            {!mapUnlocked && (
+              <button
+                type="button"
+                className="embed-unlock"
+                aria-label="Habilitar interacción con el mapa"
+                onClick={() => setMapUnlocked(true)}
+              />
+            )}
           </div>
         </div>
       </motion.div>

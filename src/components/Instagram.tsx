@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { getSlideVariants } from '../slides/variants'
-import { useIsActiveSlide } from '../slides/useSlideNav'
+import { useSlides } from '../slides/SlideContext'
 
 const INSTAGRAM_URL = 'https://www.instagram.com/taschino_cafe'
 
 // ponytail: embed sin API; si Instagram lo bloquea, migrar a Behold.so o Graph API
 export default function Instagram() {
-  const isActive = useIsActiveSlide('instagram')
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === 'instagram'
   const reduced = useReducedMotion()
+  const [embedUnlocked, setEmbedUnlocked] = useState(false)
 
   return (
     <section className="instagram">
@@ -25,7 +28,16 @@ export default function Instagram() {
             src={`${INSTAGRAM_URL}/embed`}
             title="Últimas publicaciones de Taschino en Instagram"
             loading="lazy"
+            style={embedUnlocked ? { pointerEvents: 'auto' } : undefined}
           />
+          {!embedUnlocked && (
+            <button
+              type="button"
+              className="embed-unlock"
+              aria-label="Habilitar interacción con el feed de Instagram"
+              onClick={() => setEmbedUnlocked(true)}
+            />
+          )}
         </div>
 
         {/* Fallback siempre visible: si el embed no carga, el CTA sigue funcionando */}

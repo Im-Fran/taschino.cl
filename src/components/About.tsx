@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
 import { getSlideVariants } from '../slides/variants'
-import { useIsActiveSlide } from '../slides/useSlideNav'
+import { useSlides } from '../slides/SlideContext'
 
 const CARDS = [
   {
@@ -21,7 +21,8 @@ const CARDS = [
 ]
 
 export default function About() {
-  const isActive = useIsActiveSlide('nosotros')
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === 'nosotros'
   const reduced = useReducedMotion()
 
   return (
