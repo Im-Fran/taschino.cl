@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { getSlideVariants } from '../slides/variants'
 import { useIsActiveSlide } from '../slides/useSlideNav'
 
@@ -60,16 +60,28 @@ export default function Gallery() {
         }}
         aria-label={active ? active.alt : 'Imagen ampliada'}
       >
-        <button
-          type="button"
-          className="lightbox__close"
-          onClick={closeLightbox}
-          aria-label="Cerrar imagen ampliada"
-          autoFocus
-        >
-          ✕
-        </button>
-        {active && <img src={active.src} alt={active.alt} className="lightbox__img" />}
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              key={active.src}
+              className="lightbox__content"
+              initial={reduced ? false : { opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: reduced ? 0 : 0.25, ease: 'easeOut' }}
+            >
+              <button
+                type="button"
+                className="lightbox__close"
+                onClick={closeLightbox}
+                aria-label="Cerrar imagen ampliada"
+                autoFocus
+              >
+                ✕
+              </button>
+              <img src={active.src} alt={active.alt} className="lightbox__img" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </dialog>
     </section>
   )
