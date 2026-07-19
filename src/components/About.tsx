@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
-import gsap from 'gsap'
+import { motion, useReducedMotion } from 'motion/react'
+import { getSlideVariants } from '../slides/variants'
+import { useSlides } from '../slides/SlideContext'
 
 const CARDS = [
   {
@@ -20,28 +21,18 @@ const CARDS = [
 ]
 
 export default function About() {
-  useEffect(() => {
-    const mm = gsap.matchMedia()
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(
-        '.about-card',
-        { y: 36, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: '.about__cards', start: 'top 85%' },
-        }
-      )
-    })
-    return () => mm.revert()
-  }, [])
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === 'nosotros'
+  const reduced = useReducedMotion()
 
   return (
-    <section id="nosotros" className="about fade-section">
-      <div className="about__inner container">
+    <section className="about">
+      <motion.div
+        className="about__inner container"
+        variants={getSlideVariants(!!reduced)}
+        initial="hidden"
+        animate={isActive ? 'visible' : 'hidden'}
+      >
         <div className="about__cards">
           <p className="section-kicker">Casa nostra</p>
           <h2 className="section-title section-title--left">Sobre Nosotros</h2>
@@ -60,7 +51,7 @@ export default function About() {
         <div className="about__image">
           <img src="/media/aesthetic.webp" alt="Interior acogedor de Taschino" loading="lazy" />
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

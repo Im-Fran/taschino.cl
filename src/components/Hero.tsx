@@ -1,30 +1,24 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { Link } from 'react-router-dom'
 import CoffeeLogo from './CoffeeLogo'
+import { useSlides } from '../slides/SlideContext'
 
 const TAGLINE = 'Il Caffè Italiano nel corazón de Ñuñoa'
 
 export default function Hero() {
-  const bgRef      = useRef<HTMLDivElement>(null)
   const logoRef    = useRef<HTMLDivElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
+  const { activeIndex, slideIds, goToSlide } = useSlides()
+  const isActive = slideIds[activeIndex] === 'inicio'
 
   useEffect(() => {
+    // Ya no hay scroll de documento que scrubear: la entrada se dispara
+    // cuando el slide se activa por primera vez, no on-mount incondicional.
+    if (!isActive) return
     const mm = gsap.matchMedia()
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Parallax del fondo
-      gsap.to(bgRef.current, {
-        yPercent: 20,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-
       // Entrada: logo → badge → tagline → CTAs → scroll indicator
       const chars = taglineRef.current?.querySelectorAll('.char')
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.25 })
@@ -70,11 +64,11 @@ export default function Hero() {
     })
 
     return () => mm.revert()
-  }, [])
+  }, [isActive])
 
   return (
-    <section id="inicio" className="hero" aria-label="Bienvenida">
-      <div ref={bgRef} className="hero__bg" />
+    <div className="hero" aria-label="Bienvenida">
+      <div className="hero__bg" />
       <div className="hero__overlay" />
 
       <div className="hero__content">
@@ -93,14 +87,19 @@ export default function Hero() {
         </p>
 
         <div className="hero__ctas">
-          <a href="#menu" className="btn btn--primary">Ver Menú</a>
-          <a href="#horarios" className="btn btn--outline">Encuéntranos</a>
+          <Link to="/carta" className="btn btn--primary">Ver Menú</Link>
+          <a href="#horarios" className="btn btn--outline" onClick={(e) => { e.preventDefault(); goToSlide('horarios') }}>Encuéntranos</a>
         </div>
       </div>
 
-      <a href="#nosotros" className="hero__scroll" aria-label="Bajar a la siguiente sección">
+      <a
+        href="#nosotros"
+        className="hero__scroll"
+        aria-label="Bajar a la siguiente sección"
+        onClick={(e) => { e.preventDefault(); goToSlide('nosotros') }}
+      >
         <span className="hero__scroll-line" aria-hidden="true" />
       </a>
-    </section>
+    </div>
   )
 }

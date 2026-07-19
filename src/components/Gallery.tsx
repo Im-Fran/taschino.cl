@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
+import { useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { getSlideVariants } from '../slides/variants'
+import { useSlides } from '../slides/SlideContext'
 
 const PHOTOS = [
   { src: '/media/taschino.webp',           alt: 'Interior de Taschino'     },
@@ -11,25 +13,9 @@ const PHOTOS = [
 export default function Gallery() {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [active, setActive] = useState<{ src: string; alt: string } | null>(null)
-
-  useEffect(() => {
-    const mm = gsap.matchMedia()
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(
-        '.gallery__item',
-        { scale: 0.96, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: '.gallery__grid', start: 'top 85%' },
-        }
-      )
-    })
-    return () => mm.revert()
-  }, [])
+  const { activeIndex, slideIds } = useSlides()
+  const isActive = slideIds[activeIndex] === 'galeria'
+  const reduced = useReducedMotion()
 
   function openLightbox(photo: { src: string; alt: string }) {
     setActive(photo)
@@ -41,8 +27,13 @@ export default function Gallery() {
   }
 
   return (
-    <section id="galeria" className="gallery fade-section">
-      <div className="container">
+    <section className="gallery">
+      <motion.div
+        className="container"
+        variants={getSlideVariants(!!reduced)}
+        initial="hidden"
+        animate={isActive ? 'visible' : 'hidden'}
+      >
         <p className="section-kicker">Benvenuti</p>
         <h2 className="section-title">Nuestro Espacio</h2>
         <div className="gallery__grid">
@@ -58,7 +49,7 @@ export default function Gallery() {
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Lightbox nativo: <dialog> maneja Escape y el backdrop solo */}
       <dialog
@@ -70,16 +61,28 @@ export default function Gallery() {
         }}
         aria-label={active ? active.alt : 'Imagen ampliada'}
       >
-        <button
-          type="button"
-          className="lightbox__close"
-          onClick={closeLightbox}
-          aria-label="Cerrar imagen ampliada"
-          autoFocus
-        >
-          ✕
-        </button>
-        {active && <img src={active.src} alt={active.alt} className="lightbox__img" />}
+        <AnimatePresence>
+          {active && (
+            <motion.div
+              key={active.src}
+              className="lightbox__content"
+              initial={reduced ? false : { opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: reduced ? 0 : 0.25, ease: 'easeOut' }}
+            >
+              <button
+                type="button"
+                className="lightbox__close"
+                onClick={closeLightbox}
+                aria-label="Cerrar imagen ampliada"
+                autoFocus
+              >
+                ✕
+              </button>
+              <img src={active.src} alt={active.alt} className="lightbox__img" />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </dialog>
     </section>
   )

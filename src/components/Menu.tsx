@@ -105,7 +105,7 @@ export default function Menu() {
   const visible = products.filter((p) => categorize(p.name) === activeTab)
 
   return (
-    <section id="menu" className="menu fade-section">
+    <section className="menu">
       <div className="container">
         <p className="section-kicker">Per te</p>
         <h2 className="section-title">Nuestra Carta</h2>
