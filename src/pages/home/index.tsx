@@ -29,6 +29,11 @@ const HomePage = () => {
         credits={{ enabled: false }}
         navigation={isHome}
         controlArrows={false}
+        // ponytail: el observer interno de fullpage.js no se desconecta durante
+        // destroy() y reacciona a las propias mutaciones del teardown intentando
+        // reconstruir #fp-nav a medio destruir, dejando un nav huérfano en <body>
+        // al navegar fuera de "/". No lo necesitamos (contenido estático).
+        observer={false}
         scrollingSpeed={reduced ? 0 : 700}
         fitToSection={false}
         afterLoad={(_origin: Item, destination: Item) => {
