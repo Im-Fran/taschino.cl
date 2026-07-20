@@ -99,17 +99,7 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
-/* ─── Slides full-page (JS-driven, sin scroll nativo) ───────────────── */
-.slide-track {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-.slide-track__stage {
-  position: relative;
-  width: 100%;
-}
-
+/* ─── Slides full-page (fullpage.js) ─────────────────────────────────── */
 .slide {
   position: relative;
   height: 100vh;

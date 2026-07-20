@@ -11,7 +11,8 @@ export default function Slide({ id, children }: SlideProps) {
   const isActive = slideIds[activeIndex] === id
 
   return (
-    <section id={id} className="slide" inert={!isActive || undefined}>
+    // sin id manual: fullpage.js asigna el id = anchor (slideIds) a esta .section
+    <section className="slide section" inert={!isActive || undefined}>
       {children}
     </section>
   )

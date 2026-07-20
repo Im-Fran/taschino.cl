@@ -28,3 +28,19 @@ export const SLIDE_LABELS: Record<string, string> = {
   instagram: 'Instagram',
   horarios: 'Horarios',
 }
+
+// El SlideContext.Provider vive en Layout (para que Navbar, hermano de
+// <Outlet/>, lo alcance). SlideTrack —dentro de HomePage— publica su estado
+// hacia ese Provider a través de este registro, en vez de crear su propio
+// Provider (que Navbar no podría ver por estar fuera de su subárbol).
+export interface SlideRegistry {
+  setSlideIds: (ids: string[]) => void
+  setActiveIndex: (index: number) => void
+  setMover: (mover: ((anchor: string) => void) | null) => void
+}
+
+export const SlideRegistryContext = createContext<SlideRegistry | null>(null)
+
+export function useSlideRegistry(): SlideRegistry | null {
+  return useContext(SlideRegistryContext)
+}
