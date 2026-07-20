@@ -6,6 +6,7 @@ import About from './components/about'
 import Gallery from './components/gallery'
 import Instagram from './components/instagram'
 import Hours from './components/hours'
+import { useLocation } from 'react-router-dom'
 
 // ponytail: interop CJS/ESM de Vite no desenvuelve el default de este paquete
 const ReactFullpage = (ReactFullpageImport as unknown as { default: typeof ReactFullpageImport }).default ?? ReactFullpageImport
@@ -16,6 +17,8 @@ const LABELS = ['Inicio', 'Nosotros', 'Galería', 'Instagram', 'Horarios']
 const HomePage = () => {
   const reduced = useReducedMotion()
   const [active, setActive] = useState('inicio')
+  const location = useLocation()
+  const isHome = location.pathname === '/'
 
   return (
     <>
@@ -24,7 +27,7 @@ const HomePage = () => {
         navigationTooltips={LABELS}
         licenseKey="gplv3-license" // ponytail: clave abierta oficial de fullpage.js para uso GPLv3
         credits={{ enabled: false }}
-        navigation
+        navigation={isHome}
         controlArrows={false}
         scrollingSpeed={reduced ? 0 : 700}
         fitToSection={false}

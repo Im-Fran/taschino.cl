@@ -103,6 +103,7 @@ button {
 /* Página normal del menú: scroll de documento, sin mecanismo de slides */
 .menu-page {
   min-height: 100dvh;
+  padding-top: var(--nav-h);
 }
 
 /* Nav lateral de puntos nativo de fullpage.js (#fp-nav) — oculto en mobile
@@ -717,7 +718,7 @@ button {
    de la identidad de marca. */
 .menu {
   position: relative;
-  min-height: 100%;
+  min-height: 100dvh;
   padding: 40px 0 48px;
   background: var(--color-latte);
 }
@@ -1041,7 +1042,7 @@ button {
 /* ─── Horarios y Ubicación ──────────────────────────────────────── */
 .hours {
   min-height: 100%;
-  padding: 40px 0 48px;
+  padding: calc(var(--nav-h) + 40px) 0 48px;
   background: var(--color-cream);
 }
 .hours__inner {
