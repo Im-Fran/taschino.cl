@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useSlidesOptional } from '../slides/slide-context'
 
 type NavLink =
   | { type: 'slide'; id: string; label: string }
@@ -16,15 +15,22 @@ const LINKS: NavLink[] = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === '/'
-  // Fuera de '/' el Provider no existe (Navbar vive en el Layout, fuera de HomePage);
-  // useSlidesOptional no explota, solo devuelve null.
-  const slides = useSlidesOptional()
+
+  // fullpage.js no emite eventos DOM nativos; afterLoad (registrado en HomePage)
+  // redifunde el anchor activo como CustomEvent para que Navbar, fuera de ese
+  // árbol, pueda reaccionar sin un Context propio.
+  useEffect(() => {
+    const onLoad = (e: Event) => setScrolled((e as CustomEvent<string>).detail !== 'inicio')
+    window.addEventListener('fullpage:afterload', onLoad)
+    return () => window.removeEventListener('fullpage:afterload', onLoad)
+  }, [])
 
   return (
     <nav
-      className={`navbar${slides && slides.activeIndex > 0 ? ' navbar--scrolled' : ''}`}
+      className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}
       role="navigation"
       aria-label="Navegación principal"
     >
@@ -34,7 +40,7 @@ export default function Navbar() {
         onClick={(e) => {
           if (!isHome) return
           e.preventDefault()
-          slides?.goToSlide('inicio')
+          window.fullpage_api?.moveTo('inicio')
         }}
       >
         {/* ponytail: logo CSS puro, reemplaza /media/logo.webp */}
@@ -65,7 +71,7 @@ export default function Navbar() {
                 onClick={(e) => {
                   e.preventDefault()
                   setMobileOpen(false)
-                  slides?.goToSlide(link.id)
+                  window.fullpage_api?.moveTo(link.id)
                 }}
               >
                 {link.label}

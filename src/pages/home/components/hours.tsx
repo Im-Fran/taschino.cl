@@ -1,21 +1,25 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { getSlideVariants } from '../../../slides/variants'
-import { useSlides } from '../../../slides/slide-context'
 
 const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 
-export default function Hours() {
-  const { activeIndex, slideIds } = useSlides()
-  const isActive = slideIds[activeIndex] === 'horarios'
+interface HoursProps {
+  isActive: boolean
+}
+
+export default function Hours({ isActive }: HoursProps) {
   const reduced = useReducedMotion()
   const [mapUnlocked, setMapUnlocked] = useState(false)
+  const variants = {
+    hidden: { opacity: 0, y: 36 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+  }
 
   return (
     <section className="hours">
       <motion.div
         className="container"
-        variants={getSlideVariants(!!reduced)}
+        variants={variants}
         initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
       >

@@ -1,25 +1,25 @@
 @charset "UTF-8";
 @import "tailwindcss";
 @theme {
-  --color-espresso: #2C1810;
-  --color-roast: #6B3A2A;
-  --color-caramel: #C8860A;
+  --color-espresso: #2c1810;
+  --color-roast: #6b3a2a;
+  --color-caramel: #c8860a;
   /* Variante de --color-caramel para texto sobre fondo claro (cream/latte): ratio >=4.5:1 AA.
      --color-caramel sigue usandose para fondos, bordes y precios grandes -- no tocar esos usos. */
-  --color-caramel-text: #8A6008;
-  --color-latte: #F5E6D3;
-  --color-cream: #FAFAF5;
-  --color-text: #1A0E08;
-  --color-text-light: #8B6E5A;
-  --font-serif: 'Fraunces', Georgia, serif;
-  --font-sans: 'Outfit', system-ui, sans-serif;
+  --color-caramel-text: #8a6008;
+  --color-latte: #f5e6d3;
+  --color-cream: #fafaf5;
+  --color-text: #1a0e08;
+  --color-text-light: #8b6e5a;
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
 }
 /* ─── Variables estructurales (sin equivalente útil como utilidad Tailwind) ── */
 :root {
   --radius: 20px;
   --radius-sm: 14px;
   --shadow-sm: 0 2px 12px rgba(44, 24, 16, 0.06);
-  --shadow-md: 0 12px 32px rgba(44, 24, 16, 0.10);
+  --shadow-md: 0 12px 32px rgba(44, 24, 16, 0.1);
   --shadow-lg: 0 24px 64px rgba(44, 24, 16, 0.16);
   --nav-h: 68px;
   --container: 1200px;
@@ -100,46 +100,27 @@ button {
   }
 }
 /* ─── Slides full-page (fullpage.js) ─────────────────────────────────── */
-.slide {
-  position: relative;
-  height: 100vh;
-  overflow-y: auto;
-}
-
 /* Página normal del menú: scroll de documento, sin mecanismo de slides */
 .menu-page {
   min-height: 100dvh;
 }
 
-/* Nav lateral de puntos — oculto en mobile muy angosto para no tapar contenido */
-.slide-dots {
-  position: fixed;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 90;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.slide-dots__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  padding: 0;
+/* Nav lateral de puntos nativo de fullpage.js (#fp-nav) — oculto en mobile
+   muy angosto para no tapar contenido */
+#fp-nav ul li a span {
   background: rgba(44, 24, 16, 0.25);
   border: 1.5px solid rgba(255, 255, 255, 0.5);
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
-.slide-dots__dot:hover {
-  transform: scale(1.2);
-}
-.slide-dots__dot--active {
+#fp-nav ul li a.active span,
+#fp-nav ul li a:hover span {
   background: var(--color-caramel);
   border-color: var(--color-caramel);
 }
 @media (max-width: 480px) {
-  .slide-dots {
+  #fp-nav {
     display: none;
   }
 }
@@ -202,7 +183,10 @@ button {
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.03em;
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, opacity 0.2s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    opacity 0.2s ease;
   cursor: pointer;
 }
 .btn:hover {
@@ -251,7 +235,9 @@ button {
   background: rgba(44, 24, 16, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
   /* Estado al scrollear — GSAP ScrollTrigger solo alterna esta clase */
 }
 .navbar--scrolled {
@@ -271,8 +257,8 @@ button {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: #D4A535;
-  color: #2C1810;
+  background: #d4a535;
+  color: #2c1810;
   font-family: var(--font-sans);
   font-size: 0.38rem;
   font-weight: 700;
@@ -310,7 +296,8 @@ button {
   transform-origin: left;
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.navbar__links a:hover::after, .navbar__links a:focus-visible::after {
+.navbar__links a:hover::after,
+.navbar__links a:focus-visible::after {
   transform: scaleX(1);
 }
 .navbar__links a:hover {
@@ -332,7 +319,10 @@ button {
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.25s;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.25s;
   }
   .navbar__links.open {
     visibility: visible;
@@ -369,7 +359,9 @@ button {
   height: 2px;
   background: #fff;
   border-radius: 2px;
-  transition: transform 0.25s, opacity 0.25s;
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
 }
 .navbar__hamburger.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
@@ -416,7 +408,12 @@ button {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 10, 6, 0.6) 0%, rgba(20, 10, 6, 0.45) 50%, rgba(20, 10, 6, 0.65) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(20, 10, 6, 0.6) 0%,
+    rgba(20, 10, 6, 0.45) 50%,
+    rgba(20, 10, 6, 0.65) 100%
+  );
   z-index: 1;
 }
 .hero__content {
@@ -496,7 +493,11 @@ button {
   display: block;
   width: 1.5px;
   height: 44px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0)
+  );
   overflow: hidden;
   animation: scroll-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   transform-origin: top;
@@ -675,7 +676,10 @@ button {
   padding: 26px 28px;
   border: 1px solid rgba(200, 134, 10, 0.14);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 .about-card:hover {
   transform: translateY(-4px) translateX(4px);
@@ -724,7 +728,12 @@ button {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, var(--color-caramel) 50%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-caramel) 50%,
+    transparent
+  );
 }
 .menu .section-title {
   font-size: clamp(2.4rem, 5vw, 3.6rem);
@@ -747,7 +756,12 @@ button {
   color: var(--color-roast);
   border: 1px solid rgba(44, 24, 16, 0.1);
   cursor: pointer;
-  transition: background 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+  transition:
+    background 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
   white-space: nowrap;
 }
 .menu__tab:hover {
@@ -792,7 +806,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease;
 }
 .product-card:hover {
   transform: translateY(-3px);
@@ -944,7 +960,9 @@ button {
   color: #fff;
   font-size: 1rem;
   box-shadow: var(--shadow-md);
-  transition: background 0.2s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background 0.2s,
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .lightbox__close:hover {
   background: var(--color-caramel);
@@ -988,7 +1006,7 @@ button {
   border: none;
   display: block;
   /* Un iframe con foco de puntero se traga wheel/touch antes de que lleguen
-     al SlideTrack (los eventos no burbujean fuera de un iframe same-viewport).
+     a fullpage.js (los eventos no burbujean fuera de un iframe same-viewport).
      Queda inerte hasta que el usuario pide interactuar explícitamente. */
   pointer-events: none;
 }
@@ -1110,12 +1128,12 @@ button {
   border: none;
   display: block;
   /* Ver nota en .instagram__embed iframe: evita que el mapa capture el
-     wheel/touch antes de que el SlideTrack decida el cambio de slide. */
+     wheel/touch antes de que el fullpage.js decida el cambio de sección. */
   pointer-events: none;
 }
 
 /* ─── Footer ────────────────────────────────────────────────────── */
-/* Vive fuera del slide-track (renderizado por Layout, en flujo normal
+/* Vive fuera del fullpage.js (renderizado por Layout, en flujo normal
    del documento) — sin height:100%/overflow-y heredados del sistema viejo. */
 .footer {
   display: flex;
@@ -1151,7 +1169,10 @@ button {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
-  transition: background 0.2s, color 0.2s, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .footer__social a:hover {
   background: var(--color-caramel);
@@ -1192,9 +1213,12 @@ button {
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease;
 }
-.footer__dev a:hover::after, .footer__dev a:focus-visible::after {
+.footer__dev a:hover::after,
+.footer__dev a:focus-visible::after {
   transform: scaleX(1);
   opacity: 1;
 }

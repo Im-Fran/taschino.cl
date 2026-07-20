@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
-import { getSlideVariants } from '../../../slides/variants'
-import { useSlides } from '../../../slides/slide-context'
 
 const INSTAGRAM_URL = 'https://www.instagram.com/taschino_cafe'
 
+interface InstagramProps {
+  isActive: boolean
+}
+
 // ponytail: embed sin API; si Instagram lo bloquea, migrar a Behold.so o Graph API
-export default function Instagram() {
-  const { activeIndex, slideIds } = useSlides()
-  const isActive = slideIds[activeIndex] === 'instagram'
+export default function Instagram({ isActive }: InstagramProps) {
   const reduced = useReducedMotion()
   const [embedUnlocked, setEmbedUnlocked] = useState(false)
+  const variants = {
+    hidden: { opacity: 0, y: 36 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+  }
 
   return (
     <section className="instagram">
       <motion.div
         className="container"
-        variants={getSlideVariants(!!reduced)}
+        variants={variants}
         initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
       >
