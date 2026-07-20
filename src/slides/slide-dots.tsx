@@ -1,4 +1,4 @@
-import { SLIDE_LABELS, useSlides } from './SlideContext'
+import { SLIDE_LABELS, useSlides } from './slide-context'
 
 export default function SlideDots() {
   const { slideIds, activeIndex, goToSlide } = useSlides()

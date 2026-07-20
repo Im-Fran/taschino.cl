@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { useSlides } from './SlideContext'
+import { useSlides } from './slide-context'
 
 interface SlideProps {
   id: string

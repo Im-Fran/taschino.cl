@@ -1,4 +1,4 @@
-import CoffeeLogo from './CoffeeLogo'
+import CoffeeLogo from './coffee-logo'
 
 export default function Footer() {
   return (

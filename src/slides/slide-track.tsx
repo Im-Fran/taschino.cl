@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Children, isValidElement } from 'react'
-import { SlideContext, SLIDE_LABELS, type SlideContextValue } from './SlideContext'
-import SlideDots from './SlideDots'
+import { SlideContext, SLIDE_LABELS, type SlideContextValue } from './slide-context'
+import SlideDots from './slide-dots'
 
 const TRANSITION_MS = 700
 const SWIPE_THRESHOLD_PX = 50

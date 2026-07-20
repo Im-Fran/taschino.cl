@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { getSlideVariants } from '../slides/variants'
-import { useSlides } from '../slides/SlideContext'
+import { getSlideVariants } from '../../../slides/variants'
+import { useSlides } from '../../../slides/slide-context'
 
 const CARDS = [
   {

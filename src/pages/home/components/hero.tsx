@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { Link } from 'react-router-dom'
-import CoffeeLogo from './CoffeeLogo'
-import { useSlides } from '../slides/SlideContext'
+import CoffeeLogo from '../../../components/coffee-logo'
+import { useSlides } from '../../../slides/slide-context'
 
 const TAGLINE = 'Il Caffè Italiano nel corazón de Ñuñoa'
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useSlidesOptional } from '../slides/SlideContext'
+import { useSlidesOptional } from '../slides/slide-context'
 
 type NavLink =
   | { type: 'slide'; id: string; label: string }
