@@ -853,7 +853,7 @@ button {
   min-height: 100%;
   display: flex;
   align-items: center;
-  padding: 32px 0;
+  padding: calc(var(--nav-h) + 32px) 0 32px;
   background: var(--color-cream);
   /* Grid masonry-ish: la primera imagen protagoniza */
 }
@@ -921,6 +921,9 @@ button {
 
 /* ─── Lightbox (dialog nativo) ──────────────────────────────────── */
 .lightbox {
+  /* Preflight de Tailwind resetea margin a 0 en todos los elementos,
+     lo que rompe el centrado nativo (margin:auto) de dialog:modal */
+  margin: auto;
   border: none;
   padding: 0;
   background: transparent;
