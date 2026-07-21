@@ -1,6 +1,4 @@
 import { motion, useReducedMotion } from 'motion/react'
-import { getSlideVariants } from '../slides/variants'
-import { useSlides } from '../slides/SlideContext'
 
 const CARDS = [
   {
@@ -20,16 +18,22 @@ const CARDS = [
   },
 ]
 
-export default function About() {
-  const { activeIndex, slideIds } = useSlides()
-  const isActive = slideIds[activeIndex] === 'nosotros'
+interface AboutProps {
+  isActive: boolean
+}
+
+export default function About({ isActive }: AboutProps) {
   const reduced = useReducedMotion()
+  const variants = {
+    hidden: { opacity: 0, y: 36 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+  }
 
   return (
     <section className="about">
       <motion.div
         className="about__inner container"
-        variants={getSlideVariants(!!reduced)}
+        variants={variants}
         initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
       >

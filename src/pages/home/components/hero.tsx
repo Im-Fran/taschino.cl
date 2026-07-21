@@ -1,16 +1,17 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { Link } from 'react-router-dom'
-import CoffeeLogo from './CoffeeLogo'
-import { useSlides } from '../slides/SlideContext'
+import CoffeeLogo from '../../../components/coffee-logo'
 
 const TAGLINE = 'Il Caffè Italiano nel corazón de Ñuñoa'
 
-export default function Hero() {
+interface HeroProps {
+  isActive: boolean
+}
+
+export default function Hero({ isActive }: HeroProps) {
   const logoRef    = useRef<HTMLDivElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
-  const { activeIndex, slideIds, goToSlide } = useSlides()
-  const isActive = slideIds[activeIndex] === 'inicio'
 
   useEffect(() => {
     // Ya no hay scroll de documento que scrubear: la entrada se dispara
@@ -88,7 +89,7 @@ export default function Hero() {
 
         <div className="hero__ctas">
           <Link to="/carta" className="btn btn--primary">Ver Menú</Link>
-          <a href="#horarios" className="btn btn--outline" onClick={(e) => { e.preventDefault(); goToSlide('horarios') }}>Encuéntranos</a>
+          <a href="#horarios" className="btn btn--outline" onClick={(e) => { e.preventDefault(); window.fullpage_api?.moveTo('horarios') }}>Encuéntranos</a>
         </div>
       </div>
 
@@ -96,7 +97,7 @@ export default function Hero() {
         href="#nosotros"
         className="hero__scroll"
         aria-label="Bajar a la siguiente sección"
-        onClick={(e) => { e.preventDefault(); goToSlide('nosotros') }}
+        onClick={(e) => { e.preventDefault(); window.fullpage_api?.moveTo('nosotros') }}
       >
         <span className="hero__scroll-line" aria-hidden="true" />
       </a>

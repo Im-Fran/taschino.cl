@@ -1,7 +1,5 @@
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { getSlideVariants } from '../slides/variants'
-import { useSlides } from '../slides/SlideContext'
 
 const PHOTOS = [
   { src: '/media/taschino.webp',           alt: 'Interior de Taschino'     },
@@ -10,12 +8,18 @@ const PHOTOS = [
   { src: '/media/matcha.webp',             alt: 'Matcha latte en Taschino' },
 ]
 
-export default function Gallery() {
+interface GalleryProps {
+  isActive: boolean
+}
+
+export default function Gallery({ isActive }: GalleryProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [active, setActive] = useState<{ src: string; alt: string } | null>(null)
-  const { activeIndex, slideIds } = useSlides()
-  const isActive = slideIds[activeIndex] === 'galeria'
   const reduced = useReducedMotion()
+  const variants = {
+    hidden: { opacity: 0, y: 36 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduced ? 0 : 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+  }
 
   function openLightbox(photo: { src: string; alt: string }) {
     setActive(photo)
@@ -30,7 +34,7 @@ export default function Gallery() {
     <section className="gallery">
       <motion.div
         className="container"
-        variants={getSlideVariants(!!reduced)}
+        variants={variants}
         initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
       >
