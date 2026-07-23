@@ -6,6 +6,7 @@ import About from './components/about'
 import Gallery from './components/gallery'
 import Instagram from './components/instagram'
 import Hours from './components/hours'
+import Footer from '../../components/footer'
 import { useLocation } from 'react-router-dom'
 
 // ponytail: interop CJS/ESM de Vite no desenvuelve el default de este paquete
@@ -59,7 +60,13 @@ const HomePage = () => {
             </div>
             <div className="slide section"><Gallery isActive={active === 'galeria'} /></div>
             <div className="slide section"><Instagram isActive={active === 'instagram'} /></div>
-            <div className="slide section"><Hours isActive={active === 'horarios'} /></div>
+            {/* ponytail: footer va dentro del último slide (no después de <Outlet/>
+                en Layout) porque fullpage.js bloquea el scroll nativo del documento;
+                al exceder 100dvh activa el mismo scrollOverflow que usa el slide "inicio". */}
+            <div className="slide section">
+              <Hours isActive={active === 'horarios'} />
+              <Footer />
+            </div>
           </ReactFullpage.Wrapper>
         )}
       />
