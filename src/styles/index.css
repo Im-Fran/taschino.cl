@@ -1237,6 +1237,32 @@ button {
   opacity: 1;
 }
 
+/* ─── 404 ───────────────────────────────────────────────────────── */
+.not-found {
+  min-height: 100dvh;
+  padding: calc(var(--nav-h) + 40px) 24px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  background: var(--color-cream);
+}
+.not-found__logo {
+  color: var(--color-espresso);
+  height: 90px;
+  margin-bottom: 16px;
+}
+.not-found .section-title {
+  margin-bottom: 0;
+}
+.not-found__text {
+  color: var(--color-text-light);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+
 /* ─── Accesibilidad: movimiento reducido ────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   /* GSAP oculta estos elementos antes de animarlos — asegurar visibilidad */
