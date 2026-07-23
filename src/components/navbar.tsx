@@ -8,7 +8,6 @@ type NavLink =
 const LINKS: NavLink[] = [
   { type: 'slide', id: 'inicio',    label: 'Inicio'    },
   { type: 'route', to: '/carta',    label: 'Menú'      },
-  { type: 'slide', id: 'nosotros',  label: 'Nosotros'  },
   { type: 'slide', id: 'instagram', label: 'Instagram' },
   { type: 'slide', id: 'horarios',  label: 'Horarios'  },
 ]
