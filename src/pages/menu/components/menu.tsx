@@ -1,92 +1,119 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import gsap from 'gsap'
 
 interface Product {
   name: string
-  descripcion?: string
-  precio: string
+  price: number | null
+  description: string | null
+  in_stock: boolean
+  url: string
+  imagen?: string
 }
 
-const TABS: { id: string; label: string; emoji: string }[] = [
-  { id: 'cafes',      label: 'Cafés',              emoji: '☕' },
-  { id: 'especiales', label: 'Bebidas Especiales',  emoji: '✨' },
-  { id: 'pasteleria', label: 'Pastelería',           emoji: '🥐' },
-  { id: 'sandwiches', label: 'Sándwiches',           emoji: '🥪' },
-  { id: 'italiana',   label: 'Panadería Italiana',  emoji: '🍞' },
-  { id: 'frias',      label: 'Bebidas Frías',        emoji: '🧃' },
-  { id: 'kayser',     label: 'Kayser',               emoji: '🥖' },
-  { id: 'grano',      label: 'Café en Grano',        emoji: '☕' },
-]
+interface Category {
+  category: string
+  products: Product[]
+}
 
-function categorize(name: string): string {
-  const n = name.toLowerCase()
+interface MenuData {
+  categories: Category[]
+}
 
-  // Kayser primero — muchos ítems también encajarían en otras categorías
-  if (n.includes('kayser')) return 'kayser'
+// Etiqueta y emoji por categoría del backend. Categorías nuevas no listadas
+// aquí igual se muestran, con el nombre tal cual y un emoji genérico.
+const CATEGORY_META: Record<string, { label: string; emoji: string }> = {
+  CAFETERIA: { label: 'Cafés', emoji: '☕' },
+  'LINEA ITALIA': { label: 'Panadería Italiana', emoji: '🍞' },
+  BOLLERIA: { label: 'Bollería', emoji: '🥐' },
+  PROMOCIONES: { label: 'Promociones', emoji: '🎁' },
+  BEBIDAS: { label: 'Bebidas Frías', emoji: '🧃' },
+  Ensaladas: { label: 'Ensaladas', emoji: '🥗' },
+  Pasteleria: { label: 'Pastelería', emoji: '🍰' },
+  'Pasteleria Individual': { label: 'Pastelería Individual', emoji: '🧁' },
+  'Platos calientes': { label: 'Platos Calientes', emoji: '🍲' },
+  'Sandwich Miga': { label: 'Sándwich Miga', emoji: '🥪' },
+  Sandwichs: { label: 'Sándwiches', emoji: '🥪' },
+  'LINEA CARRARO': { label: 'Café en Grano', emoji: '☕' },
+  'LINEA KAYSER': { label: 'Kayser', emoji: '🥖' },
+  INGREDIENTE: { label: 'Insumos', emoji: '🧾' },
+}
 
-  // Café en Grano
-  if (n.includes('lavazza') || n.includes('kimbo') || n.includes('carraro')) return 'grano'
+const CAFE_CATEGORIES = new Set(['CAFETERIA'])
+const SANDWICH_CATEGORIES = new Set(['Sandwichs', 'Sandwich Miga'])
 
-  // Bebidas Frías
-  if (
-    n.includes('jugo') || n.includes('agua') || n.includes('coca cola') ||
-    n.includes('limonada') || n.includes('pomona') || n.includes('ginger') ||
-    n.includes('jumex')
-  ) return 'frias'
+const isAddOn = (name: string) => /^agregado/i.test(name.trim())
+const isPromo = (name: string) => /^promo/i.test(name.trim())
 
-  // Panadería Italiana (panettone, pandoro, veneziana, etc.)
-  if (
-    n.includes('panettone') || n.includes('panettonne') || n.includes('pandoro') ||
-    n.includes('veneziana') || n.includes('sperlari') || n.includes('turron') ||
-    n.includes('coffee flower')
-  ) return 'italiana'
+const priceFormatter = new Intl.NumberFormat('es-CL', {
+  style: 'currency',
+  currency: 'CLP',
+  maximumFractionDigits: 0,
+})
+const formatPrice = (price: number | null) =>
+  price == null ? 'Consultar' : priceFormatter.format(price)
 
-  // Sándwiches — croissant solo sin calificador va a pastelería
-  if (
-    n.includes('bagel') || n.includes('ciabatta') || n.includes('miga') ||
-    n.includes('croque') ||
-    (n.includes('croissant') && (
-      n.includes('chicken') || n.includes('jamón') || n.includes('jamon') || n.includes('sesamo')
-    ))
-  ) return 'sandwiches'
+// Los "agregados" son ítems propios de la carta (jarabes, leches vegetales)
+// que también funcionan como extras para cualquier café.
+function getAddOns(products: Product[]): Product[] {
+  return products.filter(
+    (p) => isAddOn(p.name) || p.name.toLowerCase().includes('leche vegetal')
+  )
+}
 
-  // Bebidas Especiales (incluye tés)
-  if (
-    n.includes('matcha') || n.includes('chai') || n.includes('milk shake') ||
-    n.includes('frappuccino') || n.includes('chocolate italiano') ||
-    n.includes('chocolate tradicional') || n.includes('leche vegetal') ||
-    n.includes('té negro') || n.includes('te negro')
-  ) return 'especiales'
+// Sin campo "ingredientes" en los datos: se deriva de la descripción si existe,
+// o de las palabras del nombre (tras quitar el pan base y el peso) en su defecto.
+function getIngredients(product: Product): string[] {
+  if (product.description) {
+    return product.description
+      .split(/,| y /i)
+      .map((s) => s.trim())
+      .filter(Boolean)
+  }
+  const withoutWeight = product.name.replace(/\d+\s?(gr|g|ml|k)\b/gi, '').trim()
+  const words = withoutWeight.split(/\s+|&/).map((w) => w.trim()).filter(Boolean)
+  return words.slice(1)
+}
 
-  // Pastelería
-  if (
-    n.includes('media luna') || n.includes('medialuna') || n.includes('churros') ||
-    n.includes('brownie') || n.includes('muffin') || n.includes('tartaleta') ||
-    n.includes('queque') || n.includes('kuchen') || n.includes('berlin') ||
-    n.includes('roll') || n.includes('rollo') || n.includes('galletón') ||
-    n.includes('galleta') || n.includes('delicia') || n.includes('cheese cake') ||
-    n.includes('torta') || n.includes('porcion') || n.includes('porción') ||
-    n.includes('pan de chocolate') || n.includes('croissant') || n.includes('paneton')
-  ) return 'pasteleria'
-
-  // Default: cafés
-  return 'cafes'
+// Sin campo "contenidos" en los datos: se deriva de la descripción si existe,
+// o del nombre de la promo separando por "+", "más" o "y".
+function getPromoContents(product: Product): string[] {
+  const source = product.description ?? product.name.replace(/^promo(ci[oó]n)?\s*/i, '')
+  return source
+    .split(/\+| mas | más | y /i)
+    .map((s) => s.trim())
+    .filter(Boolean)
 }
 
 export default function Menu() {
-  const [activeTab, setActiveTab] = useState('cafes')
-  const [products, setProducts] = useState<Product[]>([])
+  const [categories, setCategories] = useState<Category[]>([])
+  const [activeTab, setActiveTab] = useState('CAFETERIA')
+  const [selected, setSelected] = useState<Product | null>(null)
+  const [selectedTab, setSelectedTab] = useState('')
   const gridRef = useRef<HTMLDivElement>(null)
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
-  // Carga productos desde public/
+  // Carga la carta desde public/
   useEffect(() => {
     fetch('/products.json')
-      .then((r) => r.json() as Promise<Product[]>)
-      .then(setProducts)
+      .then((r) => r.json() as Promise<MenuData>)
+      .then((data) => setCategories(data.categories.filter((c) => c.products.length > 0)))
       .catch(() => {
         // ponytail: silencioso — la landing sigue funcional sin productos
       })
   }, [])
+
+  const tabs = useMemo(
+    () =>
+      categories.map((c) => ({
+        id: c.category,
+        label: CATEGORY_META[c.category]?.label ?? c.category,
+        emoji: CATEGORY_META[c.category]?.emoji ?? '🍽️',
+      })),
+    [categories]
+  )
+
+  const allProducts = useMemo(() => categories.flatMap((c) => c.products), [categories])
+  const addOns = useMemo(() => getAddOns(allProducts), [allProducts])
 
   // Stagger animation al cambiar de tab — respeta prefers-reduced-motion
   useEffect(() => {
@@ -100,18 +127,35 @@ export default function Menu() {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.45, stagger: 0.045, ease: 'power3.out' }
     )
-  }, [activeTab, products])
+  }, [activeTab, categories])
 
-  const visible = products.filter((p) => categorize(p.name) === activeTab)
+  useEffect(() => {
+    if (selected) dialogRef.current?.showModal()
+    else dialogRef.current?.close()
+  }, [selected])
+
+  const visible = (categories.find((c) => c.category === activeTab)?.products ?? []).filter(
+    (p) => !isAddOn(p.name)
+  )
+
+  const selectedIsPromo = selected ? isPromo(selected.name) : false
+  const selectedIsCafe = selected != null && CAFE_CATEGORIES.has(selectedTab)
+  const selectedIsSandwich = selected != null && SANDWICH_CATEGORIES.has(selectedTab)
+
+  const openProduct = (product: Product) => {
+    setSelected(product)
+    setSelectedTab(activeTab)
+  }
 
   return (
     <section className="menu">
       <div className="container">
         <p className="section-kicker">Per te</p>
         <h2 className="section-title">Nuestra Carta</h2>
+        <p className="menu__hint">Presiona un producto para ver más detalles</p>
 
         <div className="menu__tabs" role="tablist" aria-label="Categorías del menú">
-          {TABS.map((tab) => (
+          {tabs.map((tab) => (
             <button
               key={tab.id}
               role="tab"
@@ -129,27 +173,102 @@ export default function Menu() {
           ref={gridRef}
           className="menu__grid"
           role="tabpanel"
-          aria-label={TABS.find((t) => t.id === activeTab)?.label}
+          aria-label={tabs.find((t) => t.id === activeTab)?.label}
         >
           {visible.map((product, i) => (
-            <article key={`${product.name}-${i}`} className="product-card">
-              {/* Línea punteada entre nombre y precio, estilo carta de café */}
+            <button
+              key={`${product.name}-${i}`}
+              type="button"
+              className="product-card"
+              onClick={() => openProduct(product)}
+            >
               <div className="product-card__row">
                 <p className="product-card__name">{product.name.toLowerCase()}</p>
                 <span className="product-card__dots" aria-hidden="true" />
-                <p className="product-card__price">{product.precio}</p>
+                <p className="product-card__price">{formatPrice(product.price)}</p>
               </div>
-              {product.descripcion && (
-                <p className="product-card__desc">{product.descripcion.toLowerCase()}</p>
+              {product.description && (
+                <p className="product-card__desc">{product.description.toLowerCase()}</p>
               )}
-            </article>
+              {CAFE_CATEGORIES.has(activeTab) && !isPromo(product.name) && addOns.length > 0 && (
+                <p className="product-card__addons-hint">+{addOns.length} agregados</p>
+              )}
+            </button>
           ))}
 
-          {products.length > 0 && visible.length === 0 && (
+          {categories.length > 0 && visible.length === 0 && (
             <p className="menu__empty">Sin productos en esta categoría.</p>
           )}
         </div>
       </div>
+
+      <dialog
+        ref={dialogRef}
+        className="product-modal"
+        onClose={() => setSelected(null)}
+        onClick={(e) => {
+          if (e.target === dialogRef.current) setSelected(null)
+        }}
+      >
+        {selected && (
+          <div className="product-modal__content">
+            <button
+              type="button"
+              className="product-modal__close"
+              aria-label="Cerrar"
+              onClick={() => setSelected(null)}
+            >
+              ×
+            </button>
+
+            {selected.imagen && (
+              <img
+                className="product-modal__image"
+                src={selected.imagen}
+                alt={selected.name.toLowerCase()}
+              />
+            )}
+
+            <h3 className="product-modal__name">{selected.name.toLowerCase()}</h3>
+            <p className="product-modal__price">{formatPrice(selected.price)}</p>
+            {selected.description && !selectedIsSandwich && !selectedIsPromo && (
+              <p className="product-modal__desc">{selected.description.toLowerCase()}</p>
+            )}
+
+            {selectedIsPromo ? (
+              <>
+                <p className="product-modal__section-label">Incluye</p>
+                <ul className="product-modal__promo-list">
+                  {getPromoContents(selected).map((item) => (
+                    <li key={item}>{item.toLowerCase()}</li>
+                  ))}
+                </ul>
+              </>
+            ) : selectedIsCafe && addOns.length > 0 ? (
+              <>
+                <p className="product-modal__section-label">Agregados posibles</p>
+                <ul className="product-modal__addons">
+                  {addOns.map((addon) => (
+                    <li key={addon.name}>
+                      <span>{addon.name.replace(/^agregado\s*/i, '').toLowerCase()}</span>
+                      <span className="product-modal__addon-price">{formatPrice(addon.price)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : selectedIsSandwich ? (
+              <>
+                <p className="product-modal__section-label">Ingredientes</p>
+                <ul className="product-modal__ingredients">
+                  {getIngredients(selected).map((ing) => (
+                    <li key={ing}>{ing.toLowerCase()}</li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
+          </div>
+        )}
+      </dialog>
     </section>
   )
 }
