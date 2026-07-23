@@ -749,6 +749,12 @@ button {
 .menu .section-title {
   font-size: clamp(2.4rem, 5vw, 3.6rem);
 }
+.menu__hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin: 8px 0 32px;
+}
 .menu__tabs {
   display: flex;
   flex-wrap: wrap;
@@ -809,6 +815,7 @@ button {
 
 /* Carta estilo cafetería: nombre … precio con línea punteada */
 .product-card {
+  width: 100%;
   background: #fff;
   border-radius: var(--radius-sm);
   padding: 20px 24px;
@@ -817,13 +824,25 @@ button {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   transition:
     transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.25s ease;
 }
-.product-card:hover {
+.product-card:hover,
+.product-card:focus-visible {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+.product-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+.product-card__addons-hint {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-caramel-text);
 }
 .product-card__row {
   display: flex;
@@ -857,6 +876,133 @@ button {
   color: var(--color-text-light);
   line-height: 1.5;
   text-transform: capitalize;
+}
+
+/* Modal de detalle de producto — <dialog> nativo, mobile-first */
+.product-modal {
+  width: min(94vw, 420px);
+  max-height: 85dvh;
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-cream);
+  box-shadow: var(--shadow-lg);
+}
+.product-modal::backdrop {
+  background: rgba(26, 14, 8, 0.55);
+  backdrop-filter: blur(2px);
+}
+.product-modal[open] {
+  animation: product-modal-in 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes product-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+}
+.product-modal__content {
+  position: relative;
+  padding: 28px 24px 24px;
+  overflow-y: auto;
+  max-height: 85dvh;
+}
+.product-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: none;
+  background: rgba(44, 24, 16, 0.08);
+  color: var(--color-espresso);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.product-modal__close:hover {
+  background: rgba(44, 24, 16, 0.16);
+}
+.product-modal__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+.product-modal__name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--color-espresso);
+  text-transform: capitalize;
+  padding-right: 24px;
+}
+.product-modal__price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-caramel);
+  margin-top: 4px;
+}
+.product-modal__desc {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  text-transform: capitalize;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.product-modal__section-label {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-roast);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.product-modal__addons,
+.product-modal__ingredients,
+.product-modal__promo-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.product-modal__ingredients li,
+.product-modal__promo-list li {
+  background: var(--color-latte);
+  color: var(--color-espresso);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  text-transform: capitalize;
+}
+.product-modal__addons {
+  flex-direction: column;
+  gap: 0;
+}
+.product-modal__addons li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(139, 110, 90, 0.18);
+  font-size: 0.88rem;
+  text-transform: capitalize;
+  color: var(--color-espresso);
+}
+.product-modal__addons li:last-child {
+  border-bottom: none;
+}
+.product-modal__addon-price {
+  font-family: var(--font-serif);
+  color: var(--color-caramel);
+  white-space: nowrap;
 }
 
 /* ─── Galería ───────────────────────────────────────────────────── */

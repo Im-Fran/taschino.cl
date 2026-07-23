@@ -1,232 +1,967 @@
-[
-  { "name": "AGREGADO SYRUP JARABE", "precio": "$500" },
-  {
-    "name": "ESPRESSO",
-    "descripcion": "SHOT DE CAFE GRANO ITALIANO",
-    "precio": "$2.000"
-  },
-  { "name": "ESPRESSO DOBLE", "precio": "$2.500" },
-  {
-    "name": "CAFE DEL DIA",
-    "descripcion": "SHOT DE CAFE MAS 50% AGUA",
-    "precio": "$2.000"
-  },
-  {
-    "name": "AMERICANO GRANDE 16 OZ",
-    "descripcion": "CAFE AMERICANO VAZO 16 OZ",
-    "precio": "$2.500"
-  },
-  { "name": "AMERICANO MEDIANO 12 OZ", "precio": "$2.000" },
-  { "name": "MATCHA LATTE", "precio": "$4.200" },
-  { "name": "LATTE PEQUEÑO 8 0Z", "precio": "$2.800" },
-  { "name": "LATTE GRANDE 16 OZ", "precio": "$3.800" },
-  { "name": "LATTE MEDIANO 12 OZ", "precio": "$3.000" },
-  { "name": "MOCACCINO PEQUEÑO 8 OZ", "precio": "$2.800" },
-  {
-    "name": "MOCACCINO MEDIANO 12 OZ",
-    "descripcion": "CAFE LECHE CHOCOLATE",
-    "precio": "$3.500"
-  },
-  { "name": "MOCACCINO GRANDE 16 OZ", "precio": "$4.200" },
-  { "name": "CHOCOLATE ITALIANO PEQUEÑO 8 OZ", "precio": "$3.800" },
-  { "name": "CORTADO GRANDE 16 OZ", "precio": "$3.800" },
-  { "name": "MILK SHAKE", "precio": "$4.500" },
-  { "name": "CHAI LATTE", "precio": "$4.200" },
-  { "name": "CORTADO PEQUEÑO 8 OZ", "precio": "$2.400" },
-  { "name": "CAPPUCCINO PEQUEÑO 8OZ", "precio": "$2.500" },
-  { "name": "CAPPUCCINO MEDIANO 12OZ", "precio": "$3.200" },
-  { "name": "CAFE PROMOCION TASCHINO", "precio": "$2.700" },
-  {
-    "name": "TE NEGRO",
-    "descripcion": "TE NEGRO VARIEDAD A ELECCIÓN",
-    "precio": "$2.000"
-  },
-  { "name": "FRAPPUCCINO", "precio": "$4.600" },
-  {
-    "name": "AMERICANO PEQUEÑO 8 OZ",
-    "descripcion": "VASO 8 OZ",
-    "precio": "$1.900"
-  },
-  { "name": "CORTADO MEDIANO 12 OZ", "precio": "$3.500" },
-  { "name": "LECHE VEGETAL", "precio": "$1.000" },
-  { "name": "CHOCOLATE ITALIANO 12 OZ", "precio": "$4.500" },
-  { "name": "CHOCOLATE TRADICIONAL 12 OZ", "precio": "$3.000" },
-  { "name": "PROMO BROWNIE", "precio": "$3.000" },
-  {
-    "name": "ESPRESSO GAGGIA",
-    "descripcion": "CAFE EXTRAIDO DE CAFETERA GAGGIA",
-    "precio": "$2.700"
-  },
-  { "name": "CAPPUCCINO GAGGIA", "precio": "$3.700" },
-  { "name": "ESPRESSO DOBLE GAGGIA", "precio": "$3.200" },
-  { "name": "LATTE GAGGIA", "precio": "$4.200" },
-  { "name": "CAPPUCCINO GRANDE 16OZ", "precio": "$4.200" },
-  { "name": "Coffee flower", "precio": "$24.900" },
-  { "name": "SPERLARI CARAMELO", "precio": "$3.500" },
-  { "name": "TURRON 150 GR", "precio": "$5.000" },
-  { "name": "TURRON 200 G", "precio": "$9.000" },
-  { "name": "Panettone Classico 1000g", "precio": "$28.950" },
-  { "name": "Panettonne Al Limoni 600", "precio": "$22.100" },
-  { "name": "Panettone al Limoni 1000 g", "precio": "$29.850" },
-  { "name": "Panettone al Mandarino 1000 g", "precio": "$28.850" },
-  { "name": "Panettone a la Rosa con Sciroppo 1000", "precio": "$28.950" },
-  { "name": "Panettone Peachmary 750 g", "precio": "$25.200" },
-  { "name": "Panettone Classsico a.D1476 750 g", "precio": "$22.850" },
-  { "name": "Panettone al Mandarino Tardivo", "precio": "$29.990" },
-  { "name": "Panettone Classico Lata D 1476 750 g", "precio": "$29.990" },
-  { "name": "Panettone Classico D.1476 500 g Sogno", "precio": "$19.800" },
-  { "name": "Panettone Classico 1000 g Milano", "precio": "$28.950" },
-  { "name": "Pandoro Classico 1000 g Astucci", "precio": "$18.300" },
-  {
-    "name": "Veneziana al Pistacchio di Bronte 600g lata",
-    "precio": "$22.850"
-  },
-  { "name": "Veneziana al Mandarino Tardivo 600 g lata", "precio": "$23.600" },
-  {
-    "name": "Veneziana al pistacho di bronte latta 600 g",
-    "precio": "$23.600"
-  },
-  { "name": "Veneziana Albicocca 600 g lata", "precio": "$27.400" },
-  { "name": "PORCION PANETON", "precio": "$3.000" },
-  { "name": "MEDIA LUNA NUTELLA", "precio": "$1.990" },
-  { "name": "MEDIA LUNA DULCE LECHE", "precio": "$1.990" },
-  { "name": "MEDIA LUNA MERMELADA", "precio": "$1.990" },
-  { "name": "MEDIALUNA PASTELERA", "precio": "$1.990" },
-  { "name": "PORCIÓN DE CHURROS 6 unid", "precio": "$3.000" },
-  {
-    "name": "PROMOCIÓN QUEQUE ITALIANO MAS CAFE AMERICANO",
-    "precio": "$3.500"
-  },
-  { "name": "PROMOCION CHURROS TASCHINO", "precio": "$3.990" },
-  { "name": "PROMOCION BROWNIE + CAFE AMERICANO", "precio": "$3.000" },
-  { "name": "PROMO MIGA DESAYUNO", "precio": "$5.800" },
-  {
-    "name": "PROMO MEDIALUNA PASTELERA Y CAFE",
-    "descripcion": "MEDIA LUNA DE PASTELERA MAS UN CAFE CHICO A ELECCIÓN",
-    "precio": "$4.500"
-  },
-  { "name": "JUGO BLESS BOTELLA 300 ML", "precio": "$2.800" },
-  { "name": "GINGER BLESS 310 ML", "precio": "$2.100" },
-  { "name": "AGUA MINERAL", "precio": "$2.500" },
-  { "name": "COCA COLA LATA", "precio": "$2.500" },
-  { "name": "LIMONADAS POMONA", "precio": "$3.800" },
-  { "name": "JUGOS JUMEX", "precio": "$2.100" },
-  { "name": "Brownie 120gr", "precio": "$2.100" },
-  { "name": "Galletón de Avena y Berries 85gr", "precio": "$1.900" },
-  {
-    "name": "Galletón vainilla con chips de chocolate 85gr",
-    "precio": "$1.900"
-  },
-  { "name": "Muffin Americano Arándanos 125gr", "precio": "$1.900" },
-  { "name": "Muffin Americano Chocolate 125gr", "precio": "$1.900" },
-  {
-    "name": "Muffin Americano Vainilla con Chips Chocolate",
-    "precio": "$1.900"
-  },
-  { "name": "Muffins zanahoria canela 125gr", "precio": "$1.900" },
-  { "name": "Tartaleta manzana 10cm 170gr", "precio": "$4.800" },
-  {
-    "name": "Tartaleta pie de limón individual 10cm 185gr",
-    "precio": "$4.800"
-  },
-  {
-    "name": "Tartaleta Pie maracuyá individual 10cm 170gr",
-    "precio": "$4.800"
-  },
-  {
-    "name": "PORCION DE TORTA TASCHINO",
-    "descripcion": "TROZO DE TORTA TASCHINO",
-    "precio": "$5.500"
-  },
-  { "name": "PORCION QUEQUE LIMON CHARLOTT", "precio": "$3.000" },
-  { "name": "PORCION KUCHEN MANZANA CHARLOT", "precio": "$3.500" },
-  { "name": "DELICIAS", "precio": "$2.000" },
-  { "name": "KUCHEN DE NUEZ", "precio": "$5.000" },
-  { "name": "Galletas Florencia Bolsa 5unid", "precio": "$2.990" },
-  { "name": "BERLIN FLORENCIA", "precio": "$1.900" },
-  { "name": "ROLL DE CANELA FLORENCIA", "precio": "$3.900" },
-  { "name": "PORCIÓN CHEESE CAKE", "precio": "$5.000" },
-  { "name": "PORCION TORTA FRAMBUESA", "precio": "$5.500" },
-  { "name": "MIGA AVE PIMENTON", "precio": "$3.500" },
-  {
-    "name": "Bagel Salmon 205gr",
-    "descripcion": "Pan Bagels, salmon ahumado, Lechuga, queso crema, aceitunas negras, queso gauda, sal, pimienta",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Ciabatta chicken cesar 320gr",
-    "descripcion": "Ciabatta, lechuga, pechuga de pollo, queso gouda, tomate, dressing cesar (mayonesa, mostaza, ajo en polvo, pimienta)",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Ciabatta mechada 320gr",
-    "descripcion": "Pan Ciabatta, carne de vacuno (mechada), lechuga, queso gouda, tomate, aceite de oliva, mayonesa, sal, pimienta",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Ciabatta Mechada BBQ 320gr",
-    "descripcion": "Ciabatta, carne mechada, queso gouda cebolla caramelizada, salsa bbq.",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Ciabatta multigrano Capresse 305gr",
-    "descripcion": "Ciabatta multigrano, lechuga, tomate, queso gouda, pesto.",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Ciabatta multigrano napolitano 305gr",
-    "descripcion": "Ciabatta multigrano, tomate, queso gouda, jamon pierna cerdo, oregano, aceitunas",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Ciabatta Pollo Pesto 300gr",
-    "descripcion": "Pan Ciabatta, pesto genovese (nueces) pollo, tomate, lechuga, sal, pimienta.",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Croissant chicken sesamo 175gr",
-    "descripcion": "Croissant, Pollo, queso gouda, queso crema, semillas sesamo negro, aceite de oliva, champiñon, sal, pimienta",
-    "precio": "$5.400"
-  },
-  {
-    "name": "Croissant Jamón & Queso 180gr",
-    "descripcion": "Croissant, jamon pierna, queso gouda.",
-    "precio": "$4.200"
-  },
-  {
-    "name": "CARRARO 1927 ESPRESSO CASA 250 G MOLIDO AL VACIO",
-    "precio": "$9.500"
-  },
-  { "name": "TARTALETA KAYSER MARACUYA", "precio": "$5.500" },
-  { "name": "ECLAIR KAYSER", "precio": "$5.700" },
-  { "name": "QUICHE ESPINACA KAYSER", "precio": "$8.850" },
-  { "name": "QUICHE KAYSER LORRAINE", "precio": "$8.850" },
-  { "name": "SANDWICH CLUB KAYSER", "precio": "$6.990" },
-  { "name": "CROISSANT JAMON Y QUESO KAYSER", "precio": "$4.750" },
-  { "name": "CROQUE MONSEUR KAYSER", "precio": "$9.500" },
-  { "name": "MINI VIENNOIS KAYSER", "precio": "$2.500" },
-  { "name": "PORCION TARTA CITRON KAYSER", "precio": "$3.760" },
-  { "name": "ROLLO CANELA KAYSER", "precio": "$2.800" },
-  { "name": "ROLLO DE PASAS", "precio": "$2.600" },
-  { "name": "MUFFIN KAYSER", "precio": "$2.900" },
-  { "name": "TARTALETA DE MANZANA", "precio": "$3.960" },
-  { "name": "TARTALETA CITRON KAYSER", "precio": "$4.500" },
-  { "name": "Focaccia Kayser", "precio": "$6.990" },
-  { "name": "CROISSANT", "precio": "$1.900" },
-  { "name": "PAN DE CHOCOLATE", "precio": "$2.800" },
-  { "name": "ROLLO LIMON", "precio": "$2.550" },
-  { "name": "TARTALETA CITRON MERENGUE", "precio": "$3.980" },
-  {
-    "name": "CAFE GRANO LAVAZZA 1 K",
-    "descripcion": "PARA USO EN LA ELABORACIÓN DE RECETAS DE CAFE",
-    "precio": "$38.985"
-  },
-  {
-    "name": "CAFE GRANO KIMBO",
-    "descripcion": "PARA USO EN PREPARACION RECETAS DE CAFE",
-    "precio": "$53.490"
-  },
-  { "name": "POMONA MANGO BOTELLA", "precio": "$0" },
-  { "name": "POMONA FRUTILLA", "precio": "$0" },
-  { "name": "POMONA PULPA LIMON", "precio": "$0" }
-]
+{
+  "restaurant": "Taschino",
+  "source_url": "https://menu.fu.do/taschino/qr-menu",
+  "address": "Pedro de Valdivia 5461",
+  "phone": "940732774",
+  "email": "moisesbravo@hotmail.com",
+  "categories": [
+    {
+      "category": "CAFETERIA",
+      "products": [
+        {
+          "name": "AGREGADO SYRUP JARABE",
+          "price": 500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/agregado-syrup-jarabe-69"
+        },
+        {
+          "name": "ESPRESSO",
+          "price": 2500,
+          "description": "SHOT DE CAFE GRANO ITALIANO",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/espresso-65"
+        },
+        {
+          "name": "ESPRESSO DOBLE",
+          "price": 3200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/espresso-doble-104"
+        },
+        {
+          "name": "AMERICANO GRANDE 16 OZ",
+          "price": 3000,
+          "description": "CAFE AMERICANO VAZO 16 OZ",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/americano-grande-16-oz-121"
+        },
+        {
+          "name": "AMERICANO MEDIANO 12 OZ",
+          "price": 2800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/americano-mediano-12-oz-73"
+        },
+        {
+          "name": "MATCHA LATTE",
+          "price": 4300,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/matcha-latte-102"
+        },
+        {
+          "name": "LATTE PEQUEÑO 8 0Z",
+          "price": 2800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/latte-pequeno-8-0z-126"
+        },
+        {
+          "name": "LATTE GRANDE 16 OZ",
+          "price": 3800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/latte-grande-16-oz-130"
+        },
+        {
+          "name": "LATTE MEDIANO 12 OZ",
+          "price": 3000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/latte-mediano-12-oz-68"
+        },
+        {
+          "name": "MOCACCINO PEQUEÑO 8 OZ",
+          "price": 2800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/mocaccino-pequeno-8-oz-122"
+        },
+        {
+          "name": "MOCACCINO MEDIANO 12 OZ",
+          "price": 3500,
+          "description": "CAFE LECHE CHOCOLATE",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/mocaccino-mediano-12-oz-70"
+        },
+        {
+          "name": "MOCACCINO GRANDE 16 OZ",
+          "price": 4200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/mocaccino-grande-16-oz-123"
+        },
+        {
+          "name": "CHOCOLATE ITALIANO PEQUEÑO 8 OZ",
+          "price": 3800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/chocolate-italiano-pequeno-8-oz-71"
+        },
+        {
+          "name": "CORTADO GRANDE 16 OZ",
+          "price": 3800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cortado-grande-16-oz-124"
+        },
+        {
+          "name": "MILK SHAKE",
+          "price": 4500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/milk-shake-74"
+        },
+        {
+          "name": "CHAI LATTE",
+          "price": 4200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/chai-latte-101"
+        },
+        {
+          "name": "CORTADO PEQUEÑO 8 OZ",
+          "price": 2900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cortado-pequeno-8-oz-103"
+        },
+        {
+          "name": "CAPPUCCINO PEQUEÑO 8OZ",
+          "price": 2900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cappuccino-pequeno-8oz-105"
+        },
+        {
+          "name": "CAPPUCCINO MEDIANO 12OZ",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cappuccino-mediano-12oz-106"
+        },
+        {
+          "name": "CAFE PROMOCION TASCHINO",
+          "price": 2700,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cafe-promocion-taschino-107"
+        },
+        {
+          "name": "TE NEGRO",
+          "price": 2900,
+          "description": "TE NEGRO VARIEDAD A ELECCIÓN",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/te-negro-118"
+        },
+        {
+          "name": "FRAPPUCCINO",
+          "price": 4600,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/frappuccino-119"
+        },
+        {
+          "name": "AMERICANO PEQUEÑO 8 OZ",
+          "price": 2300,
+          "description": "VASO 8 OZ",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/americano-pequeno-8-oz-120"
+        },
+        {
+          "name": "CORTADO MEDIANO 12 OZ",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cortado-mediano-12-oz-125"
+        },
+        {
+          "name": "LECHE VEGETAL",
+          "price": 1000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/leche-vegetal-128"
+        },
+        {
+          "name": "CHOCOLATE ITALIANO 12 OZ",
+          "price": 4500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/chocolate-italiano-12-oz-131"
+        },
+        {
+          "name": "CHOCOLATE TRADICIONAL 12 OZ",
+          "price": 3000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/chocolate-tradicional-12-oz-132"
+        },
+        {
+          "name": "PROMO BROWNIE+ Cafe a Elección Chico",
+          "price": 5000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/promo-brownie-cafe-a-eleccion-chico-135"
+        },
+        {
+          "name": "ESPRESSO GAGGIA",
+          "price": 2700,
+          "description": "CAFE EXTRAIDO DE CAFETERA GAGGIA",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/espresso-gaggia-137"
+        },
+        {
+          "name": "CAPPUCCINO GAGGIA",
+          "price": 3700,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cappuccino-gaggia-139"
+        },
+        {
+          "name": "ESPRESSO DOBLE GAGGIA",
+          "price": 3200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/espresso-doble-gaggia-138"
+        },
+        {
+          "name": "LATTE GAGGIA",
+          "price": 4200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/latte-gaggia-140"
+        },
+        {
+          "name": "CAPPUCCINO GRANDE 16OZ",
+          "price": 4200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/cappuccino-grande-16oz-147"
+        },
+        {
+          "name": "Coffee flower",
+          "price": 24900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/coffee-flower-153"
+        },
+        {
+          "name": "ICE CARAMEL MACHIATTO",
+          "price": 4900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/cafeteria/ice-caramel-machiatto-200"
+        }
+      ]
+    },
+    {
+      "category": "LINEA ITALIA",
+      "products": [
+        {
+          "name": "SPERLARI CARAMELO",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/sperlari-caramelo-75"
+        },
+        {
+          "name": "TURRON 150 GR",
+          "price": 5000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/turron-150-gr-81"
+        },
+        {
+          "name": "TURRON 200 G",
+          "price": 9000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/turron-200-g-82"
+        },
+        {
+          "name": "Panettone Classico 1000g",
+          "price": 28950,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-classico-1000g-83"
+        },
+        {
+          "name": "Panettonne Al Limoni 600",
+          "price": 22100,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettonne-al-limoni-600-84"
+        },
+        {
+          "name": "Panettone al Limoni 1000 g",
+          "price": 29850,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-al-limoni-1000-g-85"
+        },
+        {
+          "name": "Panettone al Mandarino 1000 g",
+          "price": 28850,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-al-mandarino-1000-g-86"
+        },
+        {
+          "name": "Panettone a la Rosa con Sciroppo 1000",
+          "price": 28950,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-a-la-rosa-con-sciroppo-1000-87"
+        },
+        {
+          "name": "Panettone Peachmary 750 g",
+          "price": 25200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-peachmary-750-g-88"
+        },
+        {
+          "name": "Panettone Classsico a.D1476 750 g",
+          "price": 22850,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-classsico-a-d1476-750-g-89"
+        },
+        {
+          "name": "Panettone al Mandarino Tardivo",
+          "price": 29990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-al-mandarino-tardivo-90"
+        },
+        {
+          "name": "Panettone Classico Lata D 1476 750 g",
+          "price": 29990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-classico-lata-d-1476-750-g-92"
+        },
+        {
+          "name": "Panettone Classico D.1476 500 g Sogno",
+          "price": 19800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-classico-d-1476-500-g-sogno-93"
+        },
+        {
+          "name": "Panettone Classico 1000 g Milano",
+          "price": 28950,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/panettone-classico-1000-g-milano-94"
+        },
+        {
+          "name": "Pandoro Classico 1000 g Astucci",
+          "price": 18300,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/pandoro-classico-1000-g-astucci-95"
+        },
+        {
+          "name": "Veneziana al Pistacchio di Bronte 600g lata",
+          "price": 22850,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/veneziana-al-pistacchio-di-bronte-600g-lata-96"
+        },
+        {
+          "name": "Veneziana al Mandarino Tardivo 600 g lata",
+          "price": 23600,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/veneziana-al-mandarino-tardivo-600-g-lata-97"
+        },
+        {
+          "name": "Veneziana al pistacho di bronte latta 600 g",
+          "price": 23600,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/veneziana-al-pistacho-di-bronte-latta-600-g-98"
+        },
+        {
+          "name": "Veneziana Albicocca 600 g lata",
+          "price": 27400,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/veneziana-albicocca-600-g-lata-99"
+        },
+        {
+          "name": "PORCION PANETON",
+          "price": 3000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-italia/porcion-paneton-116"
+        }
+      ]
+    },
+    {
+      "category": "BOLLERIA",
+      "products": [
+        {
+          "name": "MEDIA LUNA NUTELLA",
+          "price": 1990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bolleria/media-luna-nutella-76"
+        },
+        {
+          "name": "MEDIA LUNA DULCE LECHE",
+          "price": 1990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bolleria/media-luna-dulce-leche-77"
+        },
+        {
+          "name": "MEDIA LUNA MERMELADA",
+          "price": 1990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bolleria/media-luna-mermelada-78"
+        },
+        {
+          "name": "MEDIALUNA PASTELERA",
+          "price": 1990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bolleria/medialuna-pastelera-79"
+        },
+        {
+          "name": "PORCIÓN DE CHURROS 6 unid",
+          "price": 3000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bolleria/porcion-de-churros-6-unid-100"
+        }
+      ]
+    },
+    {
+      "category": "PROMOCIONES",
+      "products": [
+        {
+          "name": "PROMOCIÓN QUEQUE ITALIANO MAS CAFE AMERICANO",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/promociones/promocion-queque-italiano-mas-cafe-americano-110"
+        },
+        {
+          "name": "PROMOCION CHURROS TASCHINO",
+          "price": 3990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/promociones/promocion-churros-taschino-115"
+        },
+        {
+          "name": "PROMO MIGA DESAYUNO",
+          "price": 5800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/promociones/promo-miga-desayuno-155"
+        },
+        {
+          "name": "PROMO MEDIALUNA PASTELERA Y CAFE",
+          "price": 4500,
+          "description": "MEDIA LUNA DE PASTELERA MAS UN CAFE CHICO A ELECCIÓN",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/promociones/promo-medialuna-pastelera-y-cafe-160"
+        }
+      ]
+    },
+    {
+      "category": "BEBIDAS",
+      "products": [
+        {
+          "name": "JUGO BLESS BOTELLA 300 ML",
+          "price": 2800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bebidas/jugo-bless-botella-300-ml-108"
+        },
+        {
+          "name": "GINGER BLESS 310 ML",
+          "price": 2100,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bebidas/ginger-bless-310-ml-109"
+        },
+        {
+          "name": "AGUA MINERAL",
+          "price": 2500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bebidas/agua-mineral-111"
+        },
+        {
+          "name": "COCA COLA LATA",
+          "price": 2500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bebidas/coca-cola-lata-112"
+        },
+        {
+          "name": "LIMONADAS POMONA",
+          "price": 3800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bebidas/limonadas-pomona-113"
+        },
+        {
+          "name": "JUGOS JUMEX",
+          "price": 2100,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/bebidas/jugos-jumex-114"
+        }
+      ]
+    },
+    {
+      "category": "Ensaladas",
+      "products": []
+    },
+    {
+      "category": "Pasteleria",
+      "products": [
+        {
+          "name": "Brownie 120gr",
+          "price": 2500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/brownie-120gr-10"
+        },
+        {
+          "name": "Galletón de Avena y Berries 85gr",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/galleton-de-avena-y-berries-85gr-11"
+        },
+        {
+          "name": "Galletón vainilla con chips de chocolate 85gr",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/galleton-vainilla-con-chips-de-chocolate-85gr-12"
+        },
+        {
+          "name": "Muffin Americano Arándanos 125gr",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/muffin-americano-arandanos-125gr-13"
+        },
+        {
+          "name": "Muffin Americano Chocolate 125gr",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/muffin-americano-chocolate-125gr-14"
+        },
+        {
+          "name": "Muffin Americano Vainilla con Chips Chocolate",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/muffin-americano-vainilla-con-chips-chocolate-15"
+        },
+        {
+          "name": "Muffins zanahoria canela 125gr",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria/muffins-zanahoria-canela-125gr-16"
+        }
+      ]
+    },
+    {
+      "category": "Pasteleria Individual",
+      "products": [
+        {
+          "name": "Tartaleta manzana 10cm 170gr",
+          "price": 4800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/tartaleta-manzana-10cm-170gr-19"
+        },
+        {
+          "name": "Tartaleta pie de limón individual 10cm 185gr",
+          "price": 4800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/tartaleta-pie-de-limon-individual-10cm-185gr-17"
+        },
+        {
+          "name": "Tartaleta Pie maracuyá individual 10cm 170gr",
+          "price": 4800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/tartaleta-pie-maracuya-individual-10cm-170gr-20"
+        },
+        {
+          "name": "PORCION DE TORTA TASCHINO",
+          "price": 5500,
+          "description": "TROZO DE TORTA TASCHINO",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/porcion-de-torta-taschino-142"
+        },
+        {
+          "name": "PORCION QUEQUE LIMON CHARLOTT",
+          "price": 3000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/porcion-queque-limon-charlott-144"
+        },
+        {
+          "name": "PORCION KUCHEN MANZANA CHARLOT",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/porcion-kuchen-manzana-charlot-146"
+        },
+        {
+          "name": "DELICIAS",
+          "price": 2000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/delicias-156"
+        },
+        {
+          "name": "KUCHEN DE NUEZ",
+          "price": 5000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/kuchen-de-nuez-157"
+        },
+        {
+          "name": "Galletas Florencia Bolsa 5unid",
+          "price": 3200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/galletas-florencia-bolsa-5unid-159"
+        },
+        {
+          "name": "BERLIN FLORENCIA",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/berlin-florencia-161"
+        },
+        {
+          "name": "ROLL DE CANELA FLORENCIA",
+          "price": 3900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/roll-de-canela-florencia-162"
+        },
+        {
+          "name": "PORCIÓN CHEESE CAKE",
+          "price": 5000,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/porcion-cheese-cake-163"
+        },
+        {
+          "name": "PORCION TORTA FRAMBUESA",
+          "price": 5500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/pasteleria-individual/porcion-torta-frambuesa-164"
+        }
+      ]
+    },
+    {
+      "category": "Platos calientes",
+      "products": [
+        {
+          "name": "LASAGNA BOLOGNESA",
+          "price": 7200,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/platos-calientes/lasagna-bolognesa-198"
+        }
+      ]
+    },
+    {
+      "category": "Sandwich Miga",
+      "products": [
+        {
+          "name": "MIGA AVE PIMENTON",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwich-miga/miga-ave-pimenton-192"
+        }
+      ]
+    },
+    {
+      "category": "Sandwichs",
+      "products": [
+        {
+          "name": "Bagel Salmon 205gr",
+          "price": 5400,
+          "description": "Pan Bagels, salmon ahumado, Lechuga, queso crema, aceitunas negras, queso gauda, sal, pimienta",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/bagel-salmon-205gr-37"
+        },
+        {
+          "name": "Ciabatta chicken cesar 320gr",
+          "price": 5400,
+          "description": "Ciabatta, lechuga, pechuga de pollo, queso gouda, tomate, dressing cesar (mayonesa, mostaza, ajo en...)",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/ciabatta-chicken-cesar-320gr-41"
+        },
+        {
+          "name": "Ciabatta mechada 320gr",
+          "price": 5400,
+          "description": "Pan Ciabatta, carne de vacuno (mechada), lechuga, queso gouda, tomate, aceite de oliva, mayonesa, sal",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/ciabatta-mechada-320gr-44"
+        },
+        {
+          "name": "Ciabatta Mechada BBQ 320gr",
+          "price": 5400,
+          "description": "Ciabatta, carne mechada, queso gouda cebolla caramelizada, salsa bbq.",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/ciabatta-mechada-bbq-320gr-42"
+        },
+        {
+          "name": "Ciabatta multigrano Capresse 305gr",
+          "price": 5400,
+          "description": "Ciabatta multigrano, lechuga, tomate, queso gouda, pesto.",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/ciabatta-multigrano-capresse-305gr-39"
+        },
+        {
+          "name": "Ciabatta multigrano napolitano 305gr",
+          "price": 5400,
+          "description": "Ciabatta multigrano, tomate, queso gouda, jamon pierna cerdo, oregano, aceitunas",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/ciabatta-multigrano-napolitano-305gr-40"
+        },
+        {
+          "name": "Ciabatta Pollo Pesto 300gr",
+          "price": 5400,
+          "description": "Pan Ciabatta, pesto genovese (nueces) pollo, tomate, lechuga, sal, pimienta.",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/ciabatta-pollo-pesto-300gr-45"
+        },
+        {
+          "name": "Croissant chicken sesamo 175gr",
+          "price": 5400,
+          "description": "Croissant, Pollo, queso gouda, queso crema, semillas sesamo negro, aceite de oliva, champiñon, sal,",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/croissant-chicken-sesamo-175gr-47"
+        },
+        {
+          "name": "Croissant Jamón & Queso 180gr",
+          "price": 4200,
+          "description": "Croissant, jamon pierna, queso gouda.",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/sandwichs/croissant-jamon-queso-180gr-48"
+        }
+      ]
+    },
+    {
+      "category": "LINEA CARRARO",
+      "products": [
+        {
+          "name": "CARRARO 1927 ESPRESSO CASA 250 G MOLIDO AL VACIO",
+          "price": 9500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-carraro/carraro-1927-espresso-casa-250-g-molido-al-vacio-149"
+        }
+      ]
+    },
+    {
+      "category": "LINEA KAYSER",
+      "products": [
+        {
+          "name": "TARTALETA KAYSER MARACUYA",
+          "price": 5500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/tartaleta-kayser-maracuya-167"
+        },
+        {
+          "name": "ECLAIR KAYSER",
+          "price": 5700,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/eclair-kayser-168"
+        },
+        {
+          "name": "QUICHE ESPINACA KAYSER",
+          "price": 8850,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/quiche-espinaca-kayser-169"
+        },
+        {
+          "name": "QUICHE KAYSER LORRAINE",
+          "price": 8850,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/quiche-kayser-lorraine-170"
+        },
+        {
+          "name": "SANDWICH CLUB KAYSER",
+          "price": 6990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/sandwich-club-kayser-171"
+        },
+        {
+          "name": "CROISSANT JAMON Y QUESO KAYSER",
+          "price": 4750,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/croissant-jamon-y-queso-kayser-172"
+        },
+        {
+          "name": "CROQUE MONSEUR KAYSER",
+          "price": 9500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/croque-monseur-kayser-174"
+        },
+        {
+          "name": "MINI VIENNOIS KAYSER",
+          "price": 2500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/mini-viennois-kayser-175"
+        },
+        {
+          "name": "PORCION TARTA CITRON KAYSER",
+          "price": 3760,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/porcion-tarta-citron-kayser-176"
+        },
+        {
+          "name": "ROLLO CANELA KAYSER",
+          "price": 2800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/rollo-canela-kayser-178"
+        },
+        {
+          "name": "ROLLO DE PASAS",
+          "price": 2600,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/rollo-de-pasas-186"
+        },
+        {
+          "name": "MUFFIN KAYSER",
+          "price": 2900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/muffin-kayser-188"
+        },
+        {
+          "name": "TARTALETA DE MANZANA",
+          "price": 3960,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/tartaleta-de-manzana-189"
+        },
+        {
+          "name": "TARTALETA CITRON KAYSER",
+          "price": 4500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/tartaleta-citron-kayser-190"
+        },
+        {
+          "name": "Focaccia Kayser",
+          "price": 6990,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/focaccia-kayser-191"
+        },
+        {
+          "name": "CROISSANT",
+          "price": 1900,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/croissant-193"
+        },
+        {
+          "name": "PAN DE CHOCOLATE",
+          "price": 2800,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/pan-de-chocolate-194"
+        },
+        {
+          "name": "ROLLO LIMON",
+          "price": 2550,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/rollo-limon-195"
+        },
+        {
+          "name": "TARTALETA CITRON MERENGUE",
+          "price": 3980,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/tartaleta-citron-merengue-196"
+        },
+        {
+          "name": "koung aman",
+          "price": 3500,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/linea-kayser/koung-aman-199"
+        }
+      ]
+    },
+    {
+      "category": "INGREDIENTE",
+      "products": [
+        {
+          "name": "CAFE GRANO LAVAZZA 1 K",
+          "price": 38985,
+          "description": "PARA USO EN LA ELABORACIÓN DE RECETAS DE CAFE",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/ingrediente/cafe-grano-lavazza-1-k-181"
+        },
+        {
+          "name": "CAFE GRANO KIMBO",
+          "price": 53490,
+          "description": "PARA USO EN PREPARACION RECETAS DE CAFE",
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/ingrediente/cafe-grano-kimbo-182"
+        },
+        {
+          "name": "POMONA MANGO BOTELLA",
+          "price": null,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/ingrediente/pomona-mango-botella-183"
+        },
+        {
+          "name": "POMONA FRUTILLA",
+          "price": null,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/ingrediente/pomona-frutilla-184"
+        },
+        {
+          "name": "POMONA PULPA LIMON",
+          "price": null,
+          "description": null,
+          "in_stock": false,
+          "url": "https://menu.fu.do/taschino/ingrediente/pomona-pulpa-limon-185"
+        }
+      ]
+    }
+  ]
+}
